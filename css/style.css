@@ -1,0 +1,40 @@
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body{
+	width: 100%;
+	height: 100%;
+	background-color: white;
+
+}
+
+#main-container{
+	width: 100%;
+	height: 100%;
+}
+
+img	{
+	width: 100%;
+}
+
+#splashpage{
+	width: 100%;
+	height: 100vh;
+	background-image: url(../img/splashpage.jpg);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	position: absolute;
+}
+
+#tourism-logo{
+	position: relative;
+	width: 200px;
+	margin: 0 auto;
+	top: 300px;
+}
+
+
