@@ -108,7 +108,8 @@ img	{
 
 .col-6{
 	width: 50%;
-	float: left;
+	float: right;
+	padding-right: 10px;
 }
 
 .form-container{
