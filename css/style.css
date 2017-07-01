@@ -150,19 +150,37 @@ input{
 /*----------Transport Options----------*/
 
 .motorbike{
-	width: 25%;
+	width: 100px;
+	float: left;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 .small-car{
-	width: 25%;
+	width: 100px;
+	float: left;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 .medium-car{
-	width: 25%;
+	width: 100px;
+	float: left;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
+.motor-home{
+	width: 100px;
+	float: left;
+	padding-left: 10px;
+	padding-right: 10px;
+}
 
-
+/*.option{
+	width: 100px;
+	display: block;
+}*/
 
 
 
