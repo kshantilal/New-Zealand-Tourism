@@ -1,5 +1,101 @@
 $(document).ready(function(){
 
+var	map;
+
+function init(){
+	console.log('here');
+	var mapOptions = {
+		//Set where the map starts
+		center: {
+			lat: -41.299688,
+			lng: 174.811406,
+		},
+		zoom: 5,
+		disableDefaultUI: false,
+		disableDoubleClickZoom: false,
+		streetViewControl: true,
+		// scrollwheel: true,
+		// draggable: true,
+		draggableCursor: "pointer",
+		draggingCursor: "crosshair",
+		fullscreenControl: true,
+		keyboardShortcuts: false,
+		// mapTypeControlOptions:{
+		// position: google.maps.ControlPosition.TOP_CENTER,
+		// },
+		
+		styles: [
+
+		{elementType: 'geometry', stylers: [{color: '#242f3e'}]},
+		{elementType: 'labels.text.stroke', stylers: [{color: '#34495E'}]},
+		{elementType: 'labels.text.fill', stylers: [{color: '#BDC3C7'}]},
+
+		{
+			featureType: "road",
+			elementType: "geometry",
+			stylers: [
+			{color: "#6C7A89"},
+			{saturation: -80}
+
+			]
+		},
+		{
+			  featureType: 'road',
+			  elementType: 'labels.text.fill',
+			  stylers: [{color: '#95A5A6'}]
+		},
+
+		{
+			featureType: "road.highway",
+			elementType: "geometry",
+			stylers: [
+			{color: "#ABB7B7"}
+
+			]
+		},
+		{
+			featureType: 'water',
+			elementType: 'geometry',
+			stylers: [{color: '#17263c'}]
+		},
+		{
+			featureType: 'landscape.man_made',
+			elementType: 'geometry',
+			stylers: [
+				{color: '#2C3E50'},
+				
+			]
+		},
+		{
+			featureType: 'landscape.natural',
+			elementType: 'geometry',
+			stylers: [
+				{color: '#34495E'},
+				
+			]
+		},
+		{
+			featureType: 'landscape.natural.terrain',
+			elementType: 'geometry',
+			stylers: [
+				{color: '#22313F'},
+				
+			]
+		},
+
+		
+
+		]
+
+	};
+
+
+	map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+};
+
+google.maps.event.addDomListener(window, 'load', init);
+
 var	Numbers = /(?=(.*[1-9]){1}).{1,}/;
 // Validation for Number of people
 $("#People").focus(function(){
@@ -55,8 +151,7 @@ $("#People").focus(function(){
 // 	}
 
 // })
-
-
+//Google Maps
 
 
 });

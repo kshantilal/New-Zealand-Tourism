@@ -24,7 +24,7 @@
 		</div>
 
 		<div class="row">
-			<div class="col-6">
+			<div class="col-4">
 				<form id="validation" method="post">
 					<div class="form-container">
 						<label>FROM</label>
@@ -59,23 +59,28 @@
 					</div>
 				</form>
 			</div>
+			<div class="col-8">
+				<div id="map"></div>
+			</div>
 		</div>
 
 		<div class="row">
-			<div class="col-6">
+			<div class="col-12">
 				<div id="transport-options">
 					<h2 class="transport-title">Choose your Transport</h2>
-					<div class="motorbike img-size">
-						<img src="img/motorbike.png" alt="motorbike">
-					</div>
-					<div class="small-car img-size">
-						<img src="img/small-car.png" alt="small car">
-					</div>
-					<div class="medium-car img-size">
-						<img src="img/medium-car.png" alt="medium car">
-					</div>
-					<div class="motor-home img-size">
-						<img src="img/motor-home.png" alt="motor home">
+					<div class="transport-images">					
+						<div class="motorbike img-size">
+							<img src="img/motorbike.png" alt="motorbike">
+						</div>
+						<div class="small-car img-size">
+							<img src="img/small-car.png" alt="small car">
+						</div>
+						<div class="medium-car img-size">
+							<img src="img/medium-car.png" alt="medium car">
+						</div>
+						<div class="motor-home img-size">
+							<img src="img/motor-home.png" alt="motor home">
+						</div>
 					</div>
 				</div>
 			</div>
@@ -89,11 +94,9 @@
 	</div> <!-- main-container -->
 
 
-
-
-
-
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> <!-- Normal J-Query -->
+
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWeGHbX62mgk-G8yatK9IE2oFy0v6o7Dg"></script>
 	<script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>

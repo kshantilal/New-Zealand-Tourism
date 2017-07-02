@@ -16,7 +16,6 @@ body{
 
 }
 
-}
 
 #main-container{
 	width: 100%;
@@ -105,15 +104,22 @@ img	{
 
 #validation{
 	font-family: BEBAS;
-	float: right;
 	margin-top: 20px;
+	padding-left: 30px;
 
 }
 
-.col-6{
-	width: 50%;
+.col-4{
+	width: 40%;
 	float: right;
-	padding-right: 10px;
+}
+.col-8{
+	width: 60%;
+	float: left;
+}
+.col-12{
+	width: 100%;
+	display: table;
 }
 
 .form-container{
@@ -127,7 +133,7 @@ img	{
 
 input{
 	padding: 10px;
-	width: 300px;
+	width: 250px;
 	color: white;
 	background-color: transparent;
 	font-size: 15px;
@@ -173,9 +179,8 @@ input{
 
 #transport-options{
 	overflow: hidden;
-	float: right;
 	text-align: center;
-	display: inline-table;
+	margin-top: 20px;
 }
 
 .img-size{
@@ -183,7 +188,6 @@ input{
 	padding-right: 5px;
 	position: relative;
 	display: inline-block;
-	float: left;
 }
 
 .transport-title{
@@ -193,9 +197,28 @@ input{
 	margin-bottom: 20px;
 }
 
+.transport-images{
+	width: 100%;
+	text-align: center;
+	margin: 0 auto;
+}
+
+/*----------Google Maps----------*/
+
+#map{
+	height: 400px;
+}
 
 
+@media only screen and (min-width: 1024px){
+	input{
+		width: 300px;
+	}
+	.validation{
+		padding-left: 50px;
+	}
 
+}
 
 
 
