@@ -13,7 +13,6 @@ $("#down-arrow").click(function(){
 });
 
 function init(){
-	console.log('here');
 	var mapOptions = {
 		//Set where the map starts
 		center: {
@@ -24,12 +23,13 @@ function init(){
 		disableDefaultUI: false,
 		disableDoubleClickZoom: false,
 		streetViewControl: true,
-		// scrollwheel: true,
-		// draggable: true,
+		scrollwheel: true,
+		draggable: true,
 		draggableCursor: "pointer",
 		draggingCursor: "crosshair",
 		fullscreenControl: true,
 		keyboardShortcuts: false,
+		minZoom: 5,
 		// mapTypeControlOptions:{
 		// position: google.maps.ControlPosition.TOP_CENTER,
 		// },
@@ -103,7 +103,7 @@ function init(){
 	map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
 };
-
+//Loads the google map
 google.maps.event.addDomListener(window, 'load', init);
 
 var	Numbers = /(?=(.*[1-9]){1}).{1,}/;
@@ -113,8 +113,8 @@ $("#People").focus(function(){
 		$(this).parent().find('span.input-errors').empty();
 		$(this).parent().find('span.input-errors').append("<ul class='error'></ul>");
 		$(this).parent().find('span.input-errors ul').append(
-								"<li class='numbers'>Must be at least 1 person</li>"
-
+								"<li class='numbers'>Must be at least 1 person</li>"+
+								"<li class='numbers'>Must be a number</li>"
 							)
 
 	}
@@ -126,7 +126,7 @@ $("#People").focus(function(){
 		$(this).parent().find('span.input-errors .numbers').remove();
 
 	}else if ( (!$(this).val().match(Numbers)) && ($("li.numbers").length === 0) ){
-		$(this).parent().find('span.input-errors ul').append("<li class='numbers'>Must be at least 1 person</li>")
+		$(this).parent().find('span.input-errors ul').append("<li class='numbers'>Must be at least 1 person</li>" + "<li class='numbers'>Must be a number</li>")
 	
 	}
 
