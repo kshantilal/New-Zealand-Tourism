@@ -2,6 +2,16 @@ $(document).ready(function(){
 
 var	map;
 
+
+//Scroll on click
+$("#down-arrow").click(function(){
+	$('html,body').animate({
+		scrollTop: $("#map").offset().top
+	},
+	'slow');
+
+});
+
 function init(){
 	console.log('here');
 	var mapOptions = {
