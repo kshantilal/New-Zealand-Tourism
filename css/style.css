@@ -181,6 +181,7 @@ input{
 	overflow: hidden;
 	text-align: center;
 	margin-top: 20px;
+	margin-bottom: 20px;
 }
 
 .img-size{
@@ -222,8 +223,7 @@ input{
 	}
 
 }
-
-@media only screen and (min-width: 1280px){
+@media only screen and (min-width: 1200px){
 	.col-4{
 		width: 30%;
 	}
@@ -235,8 +235,27 @@ input{
 	}
 	#validation{
 		margin-top: 150px;
+		padding-left: 50px;
 	}
 }
+
+@media only screen and (min-width: 1680px){
+	.col-4{
+		width: 30%;
+	}
+	.col-8{
+		width: 70%;
+	}
+	#map{
+		height: 650px;
+	}
+	#validation{
+		margin-top: 150px;
+		padding-left: 105px;
+	}
+}
+
+
 
 
 
