@@ -150,37 +150,36 @@ input{
 /*----------Transport Options----------*/
 
 .motorbike{
-	width: 100px;
-	float: left;
-	padding-left: 10px;
-	padding-right: 10px;
+	width: 60px;
+	padding-top: 44px;
 }
 
 .small-car{
 	width: 100px;
-	float: left;
-	padding-left: 10px;
-	padding-right: 10px;
+	padding-top: 35px;
+	
 }
 
 .medium-car{
-	width: 100px;
-	float: left;
-	padding-left: 10px;
-	padding-right: 10px;
+	width: 120px;
+	padding-top: 27px;
+	
 }
 
 .motor-home{
-	width: 100px;
-	float: left;
-	padding-left: 10px;
+	width: 140px;
+}
+
+#transport-options{
+	overflow: hidden;
+	float: right;
 	padding-right: 10px;
 }
 
-/*.option{
-	width: 100px;
-	display: block;
-}*/
-
-
-
+.img-size{
+	padding-left: 10px;
+	padding-right: 10px;
+	position: relative;
+	display: inline-block;
+	float: left;
+}

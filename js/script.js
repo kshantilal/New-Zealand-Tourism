@@ -7,7 +7,8 @@ $("#People").focus(function(){
 		$(this).parent().find('span.input-errors').empty();
 		$(this).parent().find('span.input-errors').append("<ul class='error'></ul>");
 		$(this).parent().find('span.input-errors ul').append(
-								"<li class='numbers'>Must be at least 1 person</li>"					
+								"<li class='numbers'>Must be at least 1 person</li>"
+
 							)
 
 	}
@@ -20,6 +21,7 @@ $("#People").focus(function(){
 
 	}else if ( (!$(this).val().match(Numbers)) && ($("li.numbers").length === 0) ){
 		$(this).parent().find('span.input-errors ul').append("<li class='numbers'>Must be at least 1 person</li>")
+	
 	}
 
 	var maxNumber = $(this).parent().find('span.input-errors')
