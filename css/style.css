@@ -150,36 +150,53 @@ input{
 /*----------Transport Options----------*/
 
 .motorbike{
-	width: 60px;
-	padding-top: 44px;
+	width: 55px;
+	padding-top: 47px;
 }
 
 .small-car{
-	width: 100px;
-	padding-top: 35px;
+	width: 90px;
+	padding-top: 40px;
 	
 }
 
 .medium-car{
-	width: 120px;
-	padding-top: 27px;
+	width: 110px;
+	padding-top: 31px;
 	
 }
 
 .motor-home{
-	width: 140px;
+	width: 119px;
+	padding-top: 14px;
 }
 
 #transport-options{
 	overflow: hidden;
 	float: right;
-	padding-right: 10px;
+	text-align: center;
+	display: inline-table;
 }
 
 .img-size{
-	padding-left: 10px;
-	padding-right: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
 	position: relative;
 	display: inline-block;
 	float: left;
 }
+
+.transport-title{
+	font-family: BEBAS;
+	color: #191f2d;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+
