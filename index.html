@@ -28,14 +28,14 @@
 					<div class="form-container">
 						<label>FROM</label>
 						<div class="input">
-							<input type="text" name="To">
+							<input id="origin-input" class="controls" type="text" placeholder="Enter an origin location">
 						</div>
 					</div>
 
 					<div class="form-container">
 						<label>TO</label>
 						<div class="input">
-							<input type="text" name="To">
+							<input id="destination-input" class="controls" type="text" placeholder="Enter a destination location">
 						</div>					
 					</div>
 
@@ -45,7 +45,6 @@
 							<input type="text" name="People" id="People">
 							<span class="input-errors"></span>
 						</div>
-
 					</div>
 
 					<div class="form-container">
@@ -98,8 +97,7 @@
 
 
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> <!-- Normal J-Query -->
-
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWeGHbX62mgk-G8yatK9IE2oFy0v6o7Dg"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWeGHbX62mgk-G8yatK9IE2oFy0v6o7Dg&libraries=places"></script>
 	<script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>
