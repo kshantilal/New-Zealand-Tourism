@@ -42,7 +42,7 @@
 					<div class="form-container">
 						<label>Number of people</label>
 						<div class="input">
-							<input type="text" name="People" id="People">
+							<input type="text" name="People" id="People" data-ref="input-search">
 							<span class="input-errors"></span>
 						</div>
 					</div>
@@ -50,7 +50,7 @@
 					<div class="form-container">
 						<label>Days of Hire</label>
 						<div class="input">
-							<input type="text" name="Hire" id="Hire">
+							<input type="text" name="Hire" id="Hire" data-ref="input-search">
 							<span class="input-errors"></span>
 						</div>
 						
@@ -66,17 +66,17 @@
 			<div class="col-12">
 				<div id="transport-options">
 					<h2 class="transport-title">Choose your Transport</h2>
-					<div class="transport-images">					
-						<div class="motorbike img-size">
+					<div class="transport-images container" data-ref="container">					
+						<div class="motorbike img-size mix">
 							<img src="img/motorbike.png" alt="motorbike">
 						</div>
-						<div class="small-car img-size">
+						<div class="small-car img-size mix">
 							<img src="img/small-car.png" alt="small car">
 						</div>
-						<div class="medium-car img-size">
+						<div class="medium-car img-size mix">
 							<img src="img/medium-car.png" alt="medium car">
 						</div>
-						<div class="motor-home img-size">
+						<div class="motor-home img-size mix">
 							<img src="img/motor-home.png" alt="motor home">
 						</div>
 					</div>
@@ -86,18 +86,10 @@
 
 		<div class="details-container">
 			<div class="details">
-			<h1>Details</h1>
+				<h1 class="title">Details</h1>
 				<div class="info" id="routeDistance"></div>
-				
-
-
-				<div class="info" id="routeDuration"></div>
-				
-
-				
+				<div class="info" id="routeDuration"></div>			
 			</div>
-
-
 		</div>
 
 		
@@ -108,9 +100,9 @@
 	</div> <!-- main-container -->
 
 
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> <!-- Normal J-Query -->
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWeGHbX62mgk-G8yatK9IE2oFy0v6o7Dg&libraries=places"></script>
-	<script type="text/javascript" src="js/mixitup.min.js"></script>
+	<script type="text/javascript" src="js/mixitup.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>

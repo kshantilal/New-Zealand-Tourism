@@ -134,7 +134,7 @@ $("#People").focus(function(){
 	}
 
 	var maxNumber = $(this).parent().find('span.input-errors')
-	if ($(this).val() <= 7){
+	if ($(this).val() < 7){
 		$(this).parent().find('span.input-errors .max').remove();
 	} else if ( (!$(this).val().match(maxNumber)) && ($("li.max").length === 0) ){
 		$(this).parent().find('span.input-errors ul').append("<li class='max'>Must be less than 7 people</li>")
@@ -173,7 +173,6 @@ function AutocompleteDirectionsHandler(map) {
 		this.travelMode = 'DRIVING';
 		var originInput = document.getElementById('origin-input');
 		var destinationInput = document.getElementById('destination-input');
-		var modeSelector = document.getElementById('mode-selector');
 		this.directionsService = new google.maps.DirectionsService;
 		this.directionsDisplay = new google.maps.DirectionsRenderer;
 		this.directionsDisplay.setMap(map);
@@ -262,8 +261,8 @@ var mixer = mixitup(container, {
 
 inputSearch.addEventListener('keyup', function() {
 	var searchValue;
-
-	if (inputSearch.value.length < 3) {
+	console.log(searchValue);
+	if (inputSearch.value.length === 0) {
 		// If the input value is less than 3 characters, don't send
 
 		searchValue = '';
@@ -302,5 +301,28 @@ function filterByString(searchValue) {
 	}
 }
 
+// var collection = Array.from(container.querySelectorAll('.mix'));
+
+// console.log(collection.length); // 34
+
+// // Filter the collection manually using Array.prototype.filter
+
+// var filtered = collection.filter(function(target) {
+//    return parseInt(target.getAttribute('data-price')) > 4;
+// });
+
+// console.log(filtered.length); // 4
+
+// // Pass the filtered collection to MixItUp
+
+// mixer.filter(filtered)
+//    .then(function(state) {
+//        console.log(state.activeFilter.collection.length === 4); // true
+
+
+//    });
+
 
 });
+
+
