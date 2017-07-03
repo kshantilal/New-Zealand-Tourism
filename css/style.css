@@ -89,7 +89,7 @@ img	{
 	transform: rotate(135deg);
 }
 
-.container{
+.details-container{
 	width: 100%;
 }
 
@@ -268,6 +268,10 @@ input{
 .text{
 	font-size: 24px;
 }
+
+/*----------Mix it up----------*/
+
+
 
 
 
