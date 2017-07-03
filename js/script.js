@@ -30,9 +30,11 @@ function init(){
 		fullscreenControl: true,
 		keyboardShortcuts: false,
 		minZoom: 5,
-		// mapTypeControlOptions:{
-		// position: google.maps.ControlPosition.TOP_CENTER,
-		// },
+		gestureHandling: "auto",
+
+		mapTypeControlOptions:{
+		position: google.maps.ControlPosition.TOP_LEFT,
+		},
 		
 		styles: [
 
@@ -207,9 +209,9 @@ function AutocompleteDirectionsHandler(map) {
 
 	  };
 
-	  AutocompleteDirectionsHandler.prototype.route = function() {
+		AutocompleteDirectionsHandler.prototype.route = function() {
 		if (!this.originPlaceId || !this.destinationPlaceId) {
-		  return;
+			return;
 		}
 		var me = this;
 
@@ -218,13 +220,23 @@ function AutocompleteDirectionsHandler(map) {
 		  destination: {'placeId': this.destinationPlaceId},
 		  travelMode: this.travelMode
 		}, function(response, status) {
+			console.log(response);
 		  if (status === 'OK') {
 			me.directionsDisplay.setDirections(response);
+			DistanceDisplay(response.routes[0].legs[0].distance.text, response.routes[0].legs[0].duration.text);
 		  } else {
 			window.alert('Directions request failed due to ' + status);
 		  }
 		});
 	  };
+
+	function DistanceDisplay(distance,duration){
+	var Details = $(".details").val();
+	$("#routeDistance").empty().prepend("<div><h1 class='text'>"+distance+"</h1><h5>Distance</h5></div>");
+	$("#routeDuration").empty().prepend("<div><h1 class='text'>"+duration+"</h1><h5>Duration</h5</div>");
+
+
+};
 
 
 });
