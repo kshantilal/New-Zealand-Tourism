@@ -111,7 +111,7 @@ google.maps.event.addDomListener(window, 'load', init);
 
 var	Numbers = /(?=(.*[1-9]){1}).{1,}/;
 // Validation for Number of people
-$(".People").focus(function(){
+$("#People").focus(function(){
 	if ($(this).val().length === 0) {
 		$(this).parent().find('span.input-errors').empty();
 		$(this).parent().find('span.input-errors').append("<ul class='error'></ul>");
@@ -144,26 +144,26 @@ $(".People").focus(function(){
 	});
 
 //Validation for Days of Hire
-// $("#Hire").focus(function(){
-// 	if ($(this).val().length === 0) {
-// 		$(this).parent().find('span.input-errors').empty();
-// 		$(this).parent().find('span.input-errors').append("<ul class='error'></ul>");
-// 		$(this).parent().find('span.input-errors ul').append(
-// 								"<li class='numbers'>Must include 1 number</li>"					
-// 							)
+$("#Hire").focus(function(){
+	if ($(this).val().length === 0) {
+		$(this).parent().find('span.input-errors').empty();
+		$(this).parent().find('span.input-errors').append("<ul class='error'></ul>");
+		$(this).parent().find('span.input-errors ul').append(
+								"<li class='numbers'>Must include 1 number</li>"
+							)
 
-// 	}
-// }).blur(function(){
+	}
+}).blur(function(){
 
-// }).keyup(function(){
-// 	if ($(this).val().match(Numbers)) {
-// 		$(this).parent().find('span.input-errors .numbers').remove();
+}).keyup(function(){
+	if ($(this).val().match(Numbers)) {
+		$(this).parent().find('span.input-errors .numbers').remove();
 
-// 	}else if ( (!$(this).val().match(Numbers)) && ($("li.numbers").length === 0) ){
-// 		$(this).parent().find('span.input-errors ul').append("<li class='numbers'>Must hire for at least 1 day</li>")
-// 	}
+	}else if ( (!$(this).val().match(Numbers)) && ($("li.numbers").length === 0) ){
+		$(this).parent().find('span.input-errors ul').append("<li class='numbers'>Must hire for at least 1 day</li>")
+	}
 
-// })
+})
 //Google Maps
 
 function AutocompleteDirectionsHandler(map) {
@@ -241,6 +241,7 @@ function AutocompleteDirectionsHandler(map) {
 
 var container = document.querySelector('[data-ref="container"]');
 var inputSearch = document.querySelector('[data-ref="input-search"]');
+var containerEl = document.querySelector('.container');
 var keyupTimeout;
 var mixer = mixitup(container, {
 	animation: {
@@ -254,7 +255,8 @@ var mixer = mixitup(container, {
 				inputSearch.value = '';
 			}
 		}
-	}
+	},
+
 });
 	// Set up a handler to listen for "keyup" events from the search input
 
@@ -266,8 +268,6 @@ inputSearch.addEventListener('keyup', function() {
 		searchValue = '';
 	} else {
 		searchValue = inputSearch.value;
-			// 		var words = toWords(searchValue);
-
 	}
 	// Very basic throttling to prevent mixer thrashing. Only search
 	// once 350ms has passed since the last keyup event
@@ -301,10 +301,61 @@ function filterByString(searchValue) {
 		mixer.filter('[class*="' + searchValue.replace(/\s/g,'') + '"]');
 	} else {
 		// If no searchValue, treat as filter('all')
-
 		mixer.filter('all');
 	}
 }
+
+
+var motorBike = 109;
+var	smallCar = 129;
+var largeCar = 144;
+var motorHome = 200;
+// Transport Click
+function hireCost(){
+	if (motorbike == 109 * $("#Hire").val()) {	
+	}
+}
+
+hireCost();
+
+
+$("#motorbike").click(function(){
+	if (motorBike == 109) {
+		console.log('this costs 109');
+	}
+});
+
+$("#small-car").click(function(){
+	if (smallCar == 129) {
+		console.log('this costs 129');
+	}
+});
+$("#large-car").click(function(){
+	if (largeCar == 144) {
+		console.log('this costs 144');
+	}
+});
+$("#motor-home").click(function(){
+	if (motorHome == 200) {
+		console.log('this costs 200');
+	}
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

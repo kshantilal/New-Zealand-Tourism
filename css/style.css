@@ -158,24 +158,24 @@ input{
 
 /*----------Transport Options----------*/
 
-.motorbike{
+#motorbike{
 	width: 55px;
 	padding-top: 47px;
 }
 
-.small-car{
+#small-car{
 	width: 90px;
 	padding-top: 40px;
 	
 }
 
-.medium-car{
+#large-car{
 	width: 110px;
 	padding-top: 31px;
 	
 }
 
-.motor-home{
+#motor-home{
 	width: 119px;
 	padding-top: 14px;
 }
