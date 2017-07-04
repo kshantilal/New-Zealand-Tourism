@@ -41,8 +41,8 @@
 
 					<div class="form-container">
 						<label>Number of people</label>
-						<div class="input">
-							<input type="text" name="People" id="People" data-ref="input-search">
+						<div class="input" id="demo">
+							<input type="text" name="People" class="People" data-ref="input-search" id="num">
 							<span class="input-errors"></span>
 						</div>
 					</div>
@@ -50,7 +50,7 @@
 					<div class="form-container">
 						<label>Days of Hire</label>
 						<div class="input">
-							<input type="text" name="Hire" id="Hire" data-ref="input-search">
+							<input type="text" name="Hire" class="Hire" data-ref="input-search">
 							<span class="input-errors"></span>
 						</div>
 						
@@ -67,16 +67,16 @@
 				<div id="transport-options">
 					<h2 class="transport-title">Choose your Transport</h2>
 					<div class="transport-images container" data-ref="container">					
-						<div class="motorbike img-size mix">
+						<div class="motorbike img-size mix one">
 							<img src="img/motorbike.png" alt="motorbike">
 						</div>
-						<div class="small-car img-size mix">
+						<div class="small-car img-size mix one two">
 							<img src="img/small-car.png" alt="small car">
 						</div>
-						<div class="medium-car img-size mix">
+						<div class="medium-car img-size mix one two three four five">
 							<img src="img/medium-car.png" alt="medium car">
 						</div>
-						<div class="motor-home img-size mix">
+						<div class="motor-home img-size mix two three four five six">
 							<img src="img/motor-home.png" alt="motor home">
 						</div>
 					</div>
@@ -92,17 +92,14 @@
 			</div>
 		</div>
 
-		
-
-		
-
 
 	</div> <!-- main-container -->
 
 
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWeGHbX62mgk-G8yatK9IE2oFy0v6o7Dg&libraries=places"></script>
-	<script type="text/javascript" src="js/mixitup.js"></script>
+	<script type="text/javascript" src="js/mixitup.min.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>
+	<script type="text/javascript" src="js/test.js"></script>
 </body>
 </html>

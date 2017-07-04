@@ -111,7 +111,7 @@ google.maps.event.addDomListener(window, 'load', init);
 
 var	Numbers = /(?=(.*[1-9]){1}).{1,}/;
 // Validation for Number of people
-$("#People").focus(function(){
+$(".People").focus(function(){
 	if ($(this).val().length === 0) {
 		$(this).parent().find('span.input-errors').empty();
 		$(this).parent().find('span.input-errors').append("<ul class='error'></ul>");
@@ -242,7 +242,6 @@ function AutocompleteDirectionsHandler(map) {
 var container = document.querySelector('[data-ref="container"]');
 var inputSearch = document.querySelector('[data-ref="input-search"]');
 var keyupTimeout;
-
 var mixer = mixitup(container, {
 	animation: {
 		duration: 350
@@ -261,24 +260,27 @@ var mixer = mixitup(container, {
 
 inputSearch.addEventListener('keyup', function() {
 	var searchValue;
-	console.log(searchValue);
-	if (inputSearch.value.length === 0) {
-		// If the input value is less than 3 characters, don't send
 
+	if (inputSearch.value.length > 10){
+		// If the input value is greater than 2 characters, don't send
 		searchValue = '';
 	} else {
-		searchValue = inputSearch.value.toLowerCase().trim();
-	}
+		searchValue = inputSearch.value;
+			// 		var words = toWords(searchValue);
 
+	}
 	// Very basic throttling to prevent mixer thrashing. Only search
 	// once 350ms has passed since the last keyup event
-
+	// console.log(searchValue);
 	clearTimeout(keyupTimeout);
 
 	keyupTimeout = setTimeout(function() {
-		filterByString(searchValue);
+		filterByString(toWords(searchValue));
 	}, 350);
+
+
 });
+
 
 /**
  * Filters the mixer using a provided search string, which is matched against
@@ -290,10 +292,13 @@ inputSearch.addEventListener('keyup', function() {
  */
 
 function filterByString(searchValue) {
+	// console.log(searchValue);
+	console.log(searchValue.replace(/\s/g,''));
 	if (searchValue) {
+
 		// Use an attribute wildcard selector to check for matches
 
-		mixer.filter('[class*="' + searchValue + '"]');
+		mixer.filter('[class*="' + searchValue.replace(/\s/g,'') + '"]');
 	} else {
 		// If no searchValue, treat as filter('all')
 
@@ -301,26 +306,6 @@ function filterByString(searchValue) {
 	}
 }
 
-// var collection = Array.from(container.querySelectorAll('.mix'));
-
-// console.log(collection.length); // 34
-
-// // Filter the collection manually using Array.prototype.filter
-
-// var filtered = collection.filter(function(target) {
-//    return parseInt(target.getAttribute('data-price')) > 4;
-// });
-
-// console.log(filtered.length); // 4
-
-// // Pass the filtered collection to MixItUp
-
-// mixer.filter(filtered)
-//    .then(function(state) {
-//        console.log(state.activeFilter.collection.length === 4); // true
-
-
-//    });
 
 
 });
