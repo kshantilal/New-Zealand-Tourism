@@ -159,23 +159,27 @@ input{
 /*----------Transport Options----------*/
 
 #motorbike{
+	display: none;
 	width: 55px;
 	padding-top: 47px;
 }
 
 #small-car{
+	display: none;
 	width: 90px;
 	padding-top: 40px;
 	
 }
 
 #large-car{
+	display: none;
 	width: 110px;
 	padding-top: 31px;
 	
 }
 
 #motor-home{
+	display: none;
 	width: 119px;
 	padding-top: 14px;
 }
@@ -272,12 +276,6 @@ input{
 .title{
 	padding-top: 15px;
 }
-
-/*----------Mix it up----------*/
-
-
-
-
 
 
 

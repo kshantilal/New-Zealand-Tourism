@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-var	map;
+var	map, numberofPeople;
 
 
 //Scroll on click
@@ -111,7 +111,7 @@ google.maps.event.addDomListener(window, 'load', init);
 
 var	Numbers = /(?=(.*[1-9]){1}).{1,}/;
 // Validation for Number of people
-$("#People").focus(function(){
+$(".People").focus(function(){
 	if ($(this).val().length === 0) {
 		$(this).parent().find('span.input-errors').empty();
 		$(this).parent().find('span.input-errors').append("<ul class='error'></ul>");
@@ -144,7 +144,7 @@ $("#People").focus(function(){
 	});
 
 //Validation for Days of Hire
-$("#Hire").focus(function(){
+$(".Hire").focus(function(){
 	if ($(this).val().length === 0) {
 		$(this).parent().find('span.input-errors').empty();
 		$(this).parent().find('span.input-errors').append("<ul class='error'></ul>");
@@ -237,128 +237,71 @@ function AutocompleteDirectionsHandler(map) {
 
 };
 
-// Mix it up
-
-var container = document.querySelector('[data-ref="container"]');
-var inputSearch = document.querySelector('[data-ref="input-search"]');
-var containerEl = document.querySelector('.container');
-var keyupTimeout;
-var mixer = mixitup(container, {
-	animation: {
-		duration: 350
-	},
-	callbacks: {
-		onMixClick: function() {
-			// Reset the search if a filter is clicked
-
-			if (this.matches('[data-filter]')) {
-				inputSearch.value = '';
-			}
-		}
-	},
-
-});
-	// Set up a handler to listen for "keyup" events from the search input
-
-inputSearch.addEventListener('keyup', function() {
-	var searchValue;
-
-	if (inputSearch.value.length > 10){
-		// If the input value is greater than 2 characters, don't send
-		searchValue = '';
-	} else {
-		searchValue = inputSearch.value;
-	}
-	// Very basic throttling to prevent mixer thrashing. Only search
-	// once 350ms has passed since the last keyup event
-	// console.log(searchValue);
-	clearTimeout(keyupTimeout);
-
-	keyupTimeout = setTimeout(function() {
-		filterByString(toWords(searchValue));
-	}, 350);
 
 
-});
 
+var daysofHire = $("#daysofHire").val();
+var numberofPeople = $("#numberofPeople").val();
 
-/**
- * Filters the mixer using a provided search string, which is matched against
- * the contents of each target's "class" attribute. Any custom data-attribute(s)
- * could also be used.
- *
- * @param  {string} searchValue
- * @return {void}
- */
+$("#numberofPeople").focus(function(){
+	console.log('focus');
+ }).keyup(function(){
+ 	console.log('here');
+	if ((daysofHire >= 1) && (daysofHire <= 5) && (numberofPeople == 1)) {
+	   $("#motorbike").css("display", "block");
+	 }
+	 if ((daysofHire >= 1) && (daysofHire <= 10) && (numberofPeople >= 1) && (numberofPeople <= 2)) {
+	   $("#small-car").css("display", "block");
+	 }
+	 if ((daysofHire >= 3) && (daysofHire <= 10) && (numberofPeople >= 1) && (numberofPeople <= 5)) {
+	   $("#large-car").css("display", "block");
+	 }
+	 if ((daysofHire >= 2) && (daysofHire <= 15) && (numberofPeople >= 2) && (numberofPeople <= 6)) {
+	   $("#motor-home").css("display", "block");
+	 }
 
-function filterByString(searchValue) {
-	// console.log(searchValue);
-	console.log(searchValue.replace(/\s/g,''));
-	if (searchValue) {
+ });
 
-		// Use an attribute wildcard selector to check for matches
+ 
 
-		mixer.filter('[class*="' + searchValue.replace(/\s/g,'') + '"]');
-	} else {
-		// If no searchValue, treat as filter('all')
-		mixer.filter('all');
-	}
-}
 
 
 var motorBike = 109;
 var	smallCar = 129;
 var largeCar = 144;
 var motorHome = 200;
+
+var petrolPrice = 1.859;
 // Transport Click
-function hireCost(){
-	if (motorbike == 109 * $("#Hire").val()) {	
-	}
-}
+// function hireCost(){
+// 	if (motorbike == 109 * petrolPrice) {	
+// 	}
+// }
+// // console.log(hireCost);
+// hireCost();
 
-hireCost();
+// console.log(petrolPrice);
+// $("#motorbike").click(function(){
+// 	if (motorBike == 109) {
 
+// 		console.log(motorBike * petrolPrice);
+// 	}
+// });
 
-$("#motorbike").click(function(){
-	if (motorBike == 109) {
-		console.log('this costs 109');
-	}
-});
-
-$("#small-car").click(function(){
-	if (smallCar == 129) {
-		console.log('this costs 129');
-	}
-});
-$("#large-car").click(function(){
-	if (largeCar == 144) {
-		console.log('this costs 144');
-	}
-});
-$("#motor-home").click(function(){
-	if (motorHome == 200) {
-		console.log('this costs 200');
-	}
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// $("#small-car").click(function(){
+// 	if (smallCar == 129) {
+// 		console.log('this costs 129');
+// 	}
+// });
+// $("#large-car").click(function(){
+// 	if (largeCar == 144) {
+// 		console.log('this costs 144');
+// 	}
+// });
+// $("#motor-home").click(function(){
+// 	if (motorHome == 200) {
+// 		console.log('this costs 200');
+// 	}
 });
 
 
