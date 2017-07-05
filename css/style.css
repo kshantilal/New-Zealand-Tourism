@@ -163,21 +163,36 @@ input{
 	padding-top: 47px;
 }
 
+#motorbike:hover{
+	-webkit-transition: transform 0.3s ease, opacity 1.0s ease;	
+	transform: translate(0,-5px);
+}
+
 #small-car{
 	width: 90px;
 	padding-top: 40px;
-	
+}
+#small-car:hover{
+	-webkit-transition: transform 0.3s ease, opacity 1.0s ease;	
+	transform: translate(0,-5px);
 }
 
 #large-car{
 	width: 110px;
 	padding-top: 31px;
-	
+}
+#large-car:hover{
+	-webkit-transition: transform 0.3s ease, opacity 1.0s ease;	
+	transform: translate(0,-5px);
 }
 
 #motor-home{
 	width: 119px;
 	padding-top: 14px;
+}
+#motor-home:hover{
+	-webkit-transition: transform 0.3s ease, opacity 1.0s ease;	
+	transform: translate(0,-5px);
 }
 
 #transport-options{
@@ -255,7 +270,8 @@ input{
 /*----------Info----------*/
 
 .info{
-	width: 200px;
+	padding-left: 1em;
+	padding-right: 1em;
 	display: inline-block;
 	margin: 0 auto;
 	border-right: 1px solid #fff;
@@ -266,8 +282,9 @@ input{
 }
 
 .text{
-	font-size: 24px;
+	font-size: 25px;
 }
+
 
 .title{
 	padding-top: 15px;

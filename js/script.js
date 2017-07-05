@@ -236,8 +236,8 @@ AutocompleteDirectionsHandler.prototype.route = function(){
 
 function DistanceDisplay(distance,duration){
 	var Details = $(".details").val();
-	$("#routeDistance").empty().prepend("<div><h1 class='text'>"+distance+"</h1><h5>Distance</h5></div>");
-	$("#routeDuration").empty().prepend("<div><h1 class='text'>"+duration+"</h1><h5>Duration</h5</div>");
+	$("#routeDistance").empty().prepend("<div><h2 class='text'>"+distance+"</h2><h4>Distance</h4</div>");
+	$("#routeDuration").empty().prepend("<div><h2 class='text'>"+duration+"</h2><h4>Duration</h4</div>");
 
 };
 
@@ -255,7 +255,7 @@ var HireCost;
 $("#motorbike").click(function(){
 	HireCost = parseInt($("#Hire").val());
 	if (motorBike * HireCost)  {
-		$("#hireDetail").empty().prepend("<div><h1 class='text'>"+"$"+HireCost * motorBike+"</h1><h5>Hire Cost</h5></div>");
+		$("#hireDetail").empty().prepend("<div><h1 class='text'>"+"$"+HireCost * motorBike+"</h1><h4>Hire Cost</h4></div>");
 		// console.log("Your hiring cost for motorbike is: " +motorBike * HireCost);
 	}
 });
@@ -263,21 +263,21 @@ $("#motorbike").click(function(){
 $("#small-car").click(function(){
 	HireCost = parseInt($("#Hire").val());
 	if (smallCar * HireCost) {
-		$("#hireDetail").empty().prepend("<div><h1 class='text'>"+"$"+HireCost * smallCar+"</h1><h5>Hire Cost</h5></div>");
+		$("#hireDetail").empty().prepend("<div><h2 class='text'>"+"$"+HireCost * smallCar+"</h2><h4>Hire Cost</h4></div>");
 		// console.log("Your hiring cost for small car is: " + smallCar * HireCost);
 	}
 });
 $("#large-car").click(function(){
 	HireCost = parseInt($("#Hire").val());
 	if (largeCar * HireCost) {
-		$("#hireDetail").empty().prepend("<div><h1 class='text'>"+"$"+HireCost * largeCar+"</h1><h5>Hire Cost</h5></div>");
+		$("#hireDetail").empty().prepend("<div><h2 class='text'>"+"$"+HireCost * largeCar+"</h2><h4>Hire Cost</h4></div>");
 		// console.log("Your hiring cost for large car is: " + largeCar * HireCost);
 	}
 });
 $("#motor-home").click(function(){
 	HireCost = parseInt($("#Hire").val());
 	if (motorHome * HireCost) {
-		$("#hireDetail").empty().prepend("<div><h1 class='text'>"+"$"+HireCost * motorHome+"</h1><h5>Hire Cost</h5></div>");
+		$("#hireDetail").empty().prepend("<div><h2 class='text'>"+"$"+HireCost * motorHome+"</h2><h4>Hire Cost</h4></div>");
 		// console.log("Your hiring cost for motorhome is: " + motorHome * HireCost);
 	}
 });
