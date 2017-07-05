@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-var	map, numberofPeople;
+var	map;
 
 
 //Scroll on click
@@ -111,7 +111,7 @@ google.maps.event.addDomListener(window, 'load', init);
 
 var	Numbers = /(?=(.*[1-9]){1}).{1,}/;
 // Validation for Number of people
-$(".People").focus(function(){
+$("#People").focus(function(){
 	if ($(this).val().length === 0) {
 		$(this).parent().find('span.input-errors').empty();
 		$(this).parent().find('span.input-errors').append("<ul class='error'></ul>");
@@ -144,7 +144,7 @@ $(".People").focus(function(){
 	});
 
 //Validation for Days of Hire
-$(".Hire").focus(function(){
+$("#Hire").focus(function(){
 	if ($(this).val().length === 0) {
 		$(this).parent().find('span.input-errors').empty();
 		$(this).parent().find('span.input-errors').append("<ul class='error'></ul>");
@@ -237,54 +237,104 @@ function AutocompleteDirectionsHandler(map) {
 
 };
 
+// Mix it up
+
+var WordNumberPeople, WordNumberHire;
+var inputPeople = document.querySelector('[data-ref="input-people"]');
+var inputHire = document.querySelector('[data-ref="input-hire"]');
+
+var mixer = mixitup('#mix-container');
+            	function CreateVehicleMix(){
+                var FilterVariable = "." + WordNumberPeople + "." + WordNumberHire;
+                mixer.filter(FilterVariable);
+            }
+
+// 	// Set up a handler to listen for "keyup" events from the search input
+
+$(inputPeople).keyup(function(){
+
+	var searchValue;
+
+console.log($(this).val());
+
+	if ($(this).val().length > 10){
+		// If the input value is greater than 2 characters, don't send
+		searchValue = '';
+	} else {
+		searchValue = $(this).val();
+	}
+	// Very basic throttling to prevent mixer thrashing. Only search
+	// once 350ms has passed since the last keyup event
+	// console.log(searchValue);
+
+	WordNumberPeople = (toWords(searchValue) + "People");
+	console.log("Your word result for people is: "+ WordNumberPeople);
+	CreateVehicleMix();
+
+});
+
+$(inputHire).keyup(function(){
+
+	var hireValue;
+
+console.log($(this).val());
+
+	if ($(this).val().length > 10){
+		// If the input value is greater than 2 characters, don't send
+		hireValue = '';
+	} else {
+		hireValue = $(this).val();
+	}
+	// Very basic throttling to prevent mixer thrashing. Only search
+	// once 350ms has passed since the last keyup event
+	// console.log(searchValue);
+
+	WordNumberHire = (toWords(hireValue) + "Day");
+	console.log(WordNumberHire);
+	CreateVehicleMix();
+
+});
+
+/**
+ * Filters the mixer using a provided search string, which is matched against
+ * the contents of each target's "class" attribute. Any custom data-attribute(s)
+ * could also be used.
+ *
+ * @param  {string} searchValue
+ * @return {void}
+ */
+
+function filterByString(searchValue) {
+	// console.log(searchValue);
+	console.log(searchValue.replace(/\s/g,''));
+	if (searchValue) {
+
+		// Use an attribute wildcard selector to check for matches
+
+		mixer.filter('[class*="' + searchValue.replace(/\s/g,'') + '"]');
+	} else {
+		// If no searchValue, treat as filter('all')
+		mixer.filter('all');
+	}
+}
 
 
-
-var daysofHire = $("#daysofHire").val();
-var numberofPeople = $("#numberofPeople").val();
-
-$("#numberofPeople").focus(function(){
-	console.log('focus');
- }).keyup(function(){
- 	console.log('here');
-	if ((daysofHire >= 1) && (daysofHire <= 5) && (numberofPeople == 1)) {
-	   $("#motorbike").css("display", "block");
-	 }
-	 if ((daysofHire >= 1) && (daysofHire <= 10) && (numberofPeople >= 1) && (numberofPeople <= 2)) {
-	   $("#small-car").css("display", "block");
-	 }
-	 if ((daysofHire >= 3) && (daysofHire <= 10) && (numberofPeople >= 1) && (numberofPeople <= 5)) {
-	   $("#large-car").css("display", "block");
-	 }
-	 if ((daysofHire >= 2) && (daysofHire <= 15) && (numberofPeople >= 2) && (numberofPeople <= 6)) {
-	   $("#motor-home").css("display", "block");
-	 }
-
- });
-
- 
-
-
-
-var motorBike = 109;
-var	smallCar = 129;
-var largeCar = 144;
-var motorHome = 200;
-
-var petrolPrice = 1.859;
-// Transport Click
+// var motorBike = 109;
+// var	smallCar = 129;
+// var largeCar = 144;
+// var motorHome = 200;
+// // Transport Click
 // function hireCost(){
-// 	if (motorbike == 109 * petrolPrice) {	
+// 	if (motorbike == 109 * $("#Hire").val()) {	
 // 	}
 // }
-// // console.log(hireCost);
+
 // hireCost();
 
-// console.log(petrolPrice);
+
 // $("#motorbike").click(function(){
 // 	if (motorBike == 109) {
-
-// 		console.log(motorBike * petrolPrice);
+// 		console.log('this costs 109');
 // 	}
 // });
 
@@ -302,6 +352,26 @@ var petrolPrice = 1.859;
 // 	if (motorHome == 200) {
 // 		console.log('this costs 200');
 // 	}
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 });
 
 
