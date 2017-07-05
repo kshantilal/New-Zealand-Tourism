@@ -163,7 +163,7 @@ $("#Hire").focus(function(){
 		$(this).parent().find('span.input-errors ul').append("<li class='numbers'>Must hire for at least 1 day</li>")
 	}
 
-})
+});
 //Google Maps
 
 function AutocompleteDirectionsHandler(map) {
@@ -251,13 +251,14 @@ var mixer = mixitup('#mix-container');
 
 // 	// Set up a handler to listen for "keyup" events from the search input
 
+//Key up function for Number of people
 $(inputPeople).keyup(function(){
 
 	var searchValue;
 
 console.log($(this).val());
 
-	if ($(this).val().length > 10){
+	if ($(this).val().length > 2){
 		// If the input value is greater than 2 characters, don't send
 		searchValue = '';
 	} else {
@@ -273,13 +274,14 @@ console.log($(this).val());
 
 });
 
+//Key up function for Days of Hire
 $(inputHire).keyup(function(){
 
 	var hireValue;
 
 console.log($(this).val());
 
-	if ($(this).val().length > 10){
+	if ($(this).val().length > 2){
 		// If the input value is greater than 2 characters, don't send
 		hireValue = '';
 	} else {
@@ -319,54 +321,40 @@ function filterByString(searchValue) {
 }
 
 
-// var motorBike = 109;
-// var	smallCar = 129;
-// var largeCar = 144;
-// var motorHome = 200;
-// // Transport Click
-// function hireCost(){
-// 	if (motorbike == 109 * $("#Hire").val()) {	
-// 	}
-// }
+var motorBike = 109;
+var	smallCar = 129;
+var largeCar = 144;
+var motorHome = 200;
+// Transport Click
+function hireCost(){
+	if (motorbike == 109 * $("#Hire").val()) {	
+	}
+}
 
-// hireCost();
-
-
-// $("#motorbike").click(function(){
-// 	if (motorBike == 109) {
-// 		console.log('this costs 109');
-// 	}
-// });
-
-// $("#small-car").click(function(){
-// 	if (smallCar == 129) {
-// 		console.log('this costs 129');
-// 	}
-// });
-// $("#large-car").click(function(){
-// 	if (largeCar == 144) {
-// 		console.log('this costs 144');
-// 	}
-// });
-// $("#motor-home").click(function(){
-// 	if (motorHome == 200) {
-// 		console.log('this costs 200');
-// 	}
-// });
+hireCost();
 
 
+$("#motorbike").click(function(){
+	if (motorBike == 109) {
+		console.log('this costs 109');
+	}
+});
 
-
-
-
-
-
-
-
-
-
-
-
+$("#small-car").click(function(){
+	if (smallCar == 129) {
+		console.log('this costs 129');
+	}
+});
+$("#large-car").click(function(){
+	if (largeCar == 144) {
+		console.log('this costs 144');
+	}
+});
+$("#motor-home").click(function(){
+	if (motorHome == 200) {
+		console.log('this costs 200');
+	}
+});
 
 
 
