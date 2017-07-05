@@ -241,6 +241,47 @@ function DistanceDisplay(distance,duration){
 
 };
 
+// Maths for transport
+var motorBike = 109;
+var	smallCar = 129;
+var largeCar = 144;
+var motorHome = 200;
+
+var fuelCost = 1.859;
+var HireCost;
+// Transport Click
+
+
+$("#motorbike").click(function(){
+	HireCost = parseInt($("#Hire").val());
+	if (motorBike * HireCost)  {
+		$("#hireDetail").empty().prepend("<div><h1 class='text'>"+"$"+HireCost * motorBike+"</h1><h5>Hire Cost</h5></div>");
+		// console.log("Your hiring cost for motorbike is: " +motorBike * HireCost);
+	}
+});
+
+$("#small-car").click(function(){
+	HireCost = parseInt($("#Hire").val());
+	if (smallCar * HireCost) {
+		$("#hireDetail").empty().prepend("<div><h1 class='text'>"+"$"+HireCost * smallCar+"</h1><h5>Hire Cost</h5></div>");
+		// console.log("Your hiring cost for small car is: " + smallCar * HireCost);
+	}
+});
+$("#large-car").click(function(){
+	HireCost = parseInt($("#Hire").val());
+	if (largeCar * HireCost) {
+		$("#hireDetail").empty().prepend("<div><h1 class='text'>"+"$"+HireCost * largeCar+"</h1><h5>Hire Cost</h5></div>");
+		// console.log("Your hiring cost for large car is: " + largeCar * HireCost);
+	}
+});
+$("#motor-home").click(function(){
+	HireCost = parseInt($("#Hire").val());
+	if (motorHome * HireCost) {
+		$("#hireDetail").empty().prepend("<div><h1 class='text'>"+"$"+HireCost * motorHome+"</h1><h5>Hire Cost</h5></div>");
+		// console.log("Your hiring cost for motorhome is: " + motorHome * HireCost);
+	}
+});
+
 // Mix it up plugin
 
 var WordNumberPeople, WordNumberHire;
@@ -297,43 +338,6 @@ $(inputHire).keyup(function(){
 
 });
 
-
-// Maths for transport
-var motorBike = 109;
-var	smallCar = 129;
-var largeCar = 144;
-var motorHome = 200;
-
-var fuelCost = 1.859;
-var HireCost;
-// Transport Click
-
-
-$("#motorbike").click(function(){
-	HireCost = parseInt($("#Hire").val());
-	if (motorBike * HireCost)  {
-		console.log("Your hiring cost for motorbike is: " +motorBike * HireCost);
-	}
-});
-
-$("#small-car").click(function(){
-	HireCost = parseInt($("#Hire").val());
-	if (smallCar * HireCost) {
-		console.log("Your hiring cost for small car is: " + smallCar * HireCost);
-	}
-});
-$("#large-car").click(function(){
-	HireCost = parseInt($("#Hire").val());
-	if (largeCar * HireCost) {
-		console.log("Your hiring cost for large car is: " + largeCar * HireCost);
-	}
-});
-$("#motor-home").click(function(){
-	HireCost = parseInt($("#Hire").val());
-	if (motorHome * HireCost) {
-		console.log("Your hiring cost for motorhome is: " + motorHome * HireCost);
-	}
-});
 
 
 });
