@@ -1,9 +1,11 @@
 $(document).ready(function(){
 
 var	map;
+var Numbers, maxNumber; //validation variables
 
 
-//Scroll on click
+
+// Scroll on click
 $("#down-arrow").click(function(){
 	$('html,body').animate({
 		scrollTop: $("#map").offset().top
@@ -95,8 +97,6 @@ function init(){
 			]
 		},
 
-		
-
 		]
 
 	};
@@ -106,11 +106,12 @@ function init(){
 	new AutocompleteDirectionsHandler(map); //initializes the autocomplete forms
 
 };
-//Loads the google map
+// Loads the google map
 google.maps.event.addDomListener(window, 'load', init);
 
-var	Numbers = /(?=(.*[1-9]){1}).{1,}/;
+
 // Validation for Number of people
+Numbers = /(?=(.*[1-9]){1}).{1,}/;
 $("#People").focus(function(){
 	if ($(this).val().length === 0) {
 		$(this).parent().find('span.input-errors').empty();
@@ -133,7 +134,7 @@ $("#People").focus(function(){
 	
 	}
 
-	var maxNumber = $(this).parent().find('span.input-errors')
+	maxNumber = $(this).parent().find('span.input-errors')
 	if ($(this).val() < 7){
 		$(this).parent().find('span.input-errors .max').remove();
 	} else if ( (!$(this).val().match(maxNumber)) && ($("li.max").length === 0) ){
@@ -143,7 +144,7 @@ $("#People").focus(function(){
 
 	});
 
-//Validation for Days of Hire
+// Validation for Days of Hire
 $("#Hire").focus(function(){
 	if ($(this).val().length === 0) {
 		$(this).parent().find('span.input-errors').empty();
@@ -162,99 +163,103 @@ $("#Hire").focus(function(){
 	}else if ( (!$(this).val().match(Numbers)) && ($("li.numbers").length === 0) ){
 		$(this).parent().find('span.input-errors ul').append("<li class='numbers'>Must hire for at least 1 day</li>")
 	}
+	maxNumber = $(this).parent().find('span.input-errors')
+	if ($(this).val() <= 15){
+		$(this).parent().find('span.input-errors .max').remove();
+	} else if ( (!$(this).val().match(maxNumber)) && ($("li.max").length === 0) ){
+		$(this).parent().find('span.input-errors ul').append("<li class='max'>Must be less than 15 people</li>")
+	}
 
 });
-//Google Maps
+// Google Maps
 
 function AutocompleteDirectionsHandler(map) {
-		this.map = map;
-		this.originPlaceId = null;
-		this.destinationPlaceId = null;
-		this.travelMode = 'DRIVING';
-		var originInput = document.getElementById('origin-input');
-		var destinationInput = document.getElementById('destination-input');
-		this.directionsService = new google.maps.DirectionsService;
-		this.directionsDisplay = new google.maps.DirectionsRenderer;
-		this.directionsDisplay.setMap(map);
+	this.map = map;
+	this.originPlaceId = null;
+	this.destinationPlaceId = null;
+	this.travelMode = 'DRIVING';
+	var originInput = document.getElementById('origin-input');
+	var destinationInput = document.getElementById('destination-input');
+	this.directionsService = new google.maps.DirectionsService;
+	this.directionsDisplay = new google.maps.DirectionsRenderer;
+	this.directionsDisplay.setMap(map);
 
-		var originAutocomplete = new google.maps.places.Autocomplete(
-			originInput, {placeIdOnly: true});
-		var destinationAutocomplete = new google.maps.places.Autocomplete(
-			destinationInput, {placeIdOnly: true});
+	var originAutocomplete = new google.maps.places.Autocomplete(
+		originInput, {placeIdOnly: true});
+	var destinationAutocomplete = new google.maps.places.Autocomplete(
+		destinationInput, {placeIdOnly: true});
 
-
-		this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
-		this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
-
-	  }
+	this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
+	this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
+};
 
 
-	  AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function(autocomplete, mode) {
-		var me = this;
-		autocomplete.bindTo('bounds', this.map);
-		autocomplete.addListener('place_changed', function() {
-		  var place = autocomplete.getPlace();
-		  if (!place.place_id) {
+AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function(autocomplete, mode){
+	var me = this;
+	autocomplete.bindTo('bounds', this.map);
+	autocomplete.addListener('place_changed', function(){
+		var place = autocomplete.getPlace();
+		if (!place.place_id){
 			window.alert("Please select an option from the dropdown list.");
 			return;
-		  }
-		  if (mode === 'ORIG') {
-			me.originPlaceId = place.place_id;
-		  } else {
-			me.destinationPlaceId = place.place_id;
-		  }
-		  me.route();
-		});
-
-	  };
-
-		AutocompleteDirectionsHandler.prototype.route = function() {
-		if (!this.originPlaceId || !this.destinationPlaceId) {
-			return;
 		}
-		var me = this;
+		if (mode === 'ORIG'){
+			me.originPlaceId = place.place_id;
+		} else {
+			me.destinationPlaceId = place.place_id;
+		}
+		me.route();
+	});
 
-		this.directionsService.route({
-		  origin: {'placeId': this.originPlaceId},
-		  destination: {'placeId': this.destinationPlaceId},
-		  travelMode: this.travelMode
-		}, function(response, status) {
-			console.log(response);
-		  if (status === 'OK') {
+};
+
+AutocompleteDirectionsHandler.prototype.route = function(){
+	if (!this.originPlaceId || !this.destinationPlaceId){
+		return;
+	}
+	var me = this;
+
+	this.directionsService.route({
+		origin: {'placeId': this.originPlaceId},
+		destination: {'placeId': this.destinationPlaceId},
+		travelMode: this.travelMode
+	}, function(response, status) {
+		console.log(response);
+			if (status === 'OK') {
 			me.directionsDisplay.setDirections(response);
 			DistanceDisplay(response.routes[0].legs[0].distance.text, response.routes[0].legs[0].duration.text);
-		  } else {
+			} else {
 			window.alert('Directions request failed due to ' + status);
-		  }
-		});
-	  };
+			}
+	});
+};
 
-	function DistanceDisplay(distance,duration){
+function DistanceDisplay(distance,duration){
 	var Details = $(".details").val();
 	$("#routeDistance").empty().prepend("<div><h1 class='text'>"+distance+"</h1><h5>Distance</h5></div>");
 	$("#routeDuration").empty().prepend("<div><h1 class='text'>"+duration+"</h1><h5>Duration</h5</div>");
 
-
 };
 
-// Mix it up
+// Mix it up plugin
 
 var WordNumberPeople, WordNumberHire;
 var inputPeople = document.querySelector('[data-ref="input-people"]');
 var inputHire = document.querySelector('[data-ref="input-hire"]');
 
 var mixer = mixitup('#mix-container');
-            	function CreateVehicleMix(){
-                var FilterVariable = "." + WordNumberPeople + "." + WordNumberHire;
-                mixer.filter(FilterVariable);
-            }
 
-// 	// Set up a handler to listen for "keyup" events from the search input
+function transportMix(){
+	var FilterVariable = "." + WordNumberPeople + "." + WordNumberHire;
+	mixer.filter(FilterVariable);
+};
 
-//Key up function for Number of people
+// Set up a handler to listen for "keyup" events from the search input
+
+// Key up function for Number of people
 $(inputPeople).keyup(function(){
 
-	var searchValue;
+var searchValue;
 
 console.log($(this).val());
 
@@ -264,22 +269,19 @@ console.log($(this).val());
 	} else {
 		searchValue = $(this).val();
 	}
-	// Very basic throttling to prevent mixer thrashing. Only search
-	// once 350ms has passed since the last keyup event
+
 	// console.log(searchValue);
 
 	WordNumberPeople = (toWords(searchValue) + "People");
-	console.log("Your word result for people is: "+ WordNumberPeople);
-	CreateVehicleMix();
+	// console.log("Your word result for people is: "+ WordNumberPeople);
+	transportMix();
 
 });
 
-//Key up function for Days of Hire
+// Key up function for Days of Hire
 $(inputHire).keyup(function(){
 
 	var hireValue;
-
-console.log($(this).val());
 
 	if ($(this).val().length > 2){
 		// If the input value is greater than 2 characters, don't send
@@ -287,79 +289,60 @@ console.log($(this).val());
 	} else {
 		hireValue = $(this).val();
 	}
-	// Very basic throttling to prevent mixer thrashing. Only search
-	// once 350ms has passed since the last keyup event
 	// console.log(searchValue);
 
 	WordNumberHire = (toWords(hireValue) + "Day");
-	console.log(WordNumberHire);
-	CreateVehicleMix();
+	// console.log(WordNumberHire);
+	transportMix();
 
 });
 
-/**
- * Filters the mixer using a provided search string, which is matched against
- * the contents of each target's "class" attribute. Any custom data-attribute(s)
- * could also be used.
- *
- * @param  {string} searchValue
- * @return {void}
- */
 
-function filterByString(searchValue) {
-	// console.log(searchValue);
-	console.log(searchValue.replace(/\s/g,''));
-	if (searchValue) {
-
-		// Use an attribute wildcard selector to check for matches
-
-		mixer.filter('[class*="' + searchValue.replace(/\s/g,'') + '"]');
-	} else {
-		// If no searchValue, treat as filter('all')
-		mixer.filter('all');
-	}
-}
-
-
+// Maths for transport
 var motorBike = 109;
 var	smallCar = 129;
 var largeCar = 144;
 var motorHome = 200;
-// Transport Click
-function hireCost(){
-	if (motorbike == 109 * $("#Hire").val()) {	
-	}
-}
 
-hireCost();
+var fuelCost = 1.859;
+var HireCost;
+// Transport Click
 
 
 $("#motorbike").click(function(){
-	if (motorBike == 109) {
-		console.log('this costs 109');
+	HireCost = parseInt($("#Hire").val());
+	if (motorBike * HireCost)  {
+		console.log("Your hiring cost for motorbike is: " +motorBike * HireCost);
 	}
 });
 
 $("#small-car").click(function(){
-	if (smallCar == 129) {
-		console.log('this costs 129');
+	HireCost = parseInt($("#Hire").val());
+	if (smallCar * HireCost) {
+		console.log("Your hiring cost for small car is: " + smallCar * HireCost);
 	}
 });
 $("#large-car").click(function(){
-	if (largeCar == 144) {
-		console.log('this costs 144');
+	HireCost = parseInt($("#Hire").val());
+	if (largeCar * HireCost) {
+		console.log("Your hiring cost for large car is: " + largeCar * HireCost);
 	}
 });
 $("#motor-home").click(function(){
-	if (motorHome == 200) {
-		console.log('this costs 200');
+	HireCost = parseInt($("#Hire").val());
+	if (motorHome * HireCost) {
+		console.log("Your hiring cost for motorhome is: " + motorHome * HireCost);
 	}
 });
 
 
-
-
-
 });
+
+
+
+
+
+
+
 
 
