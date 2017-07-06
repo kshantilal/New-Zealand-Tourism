@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 var	map;
-var Numbers, maxNumber; //validation variables
+var Numbers, maxNumber, hasMap, hasOrig, hasDest; //validation variables
 
 
 
@@ -207,10 +207,14 @@ AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function(aut
 		}
 		if (mode === 'ORIG'){
 			me.originPlaceId = place.place_id;
+			hasOrig = true;
 		} else {
 			me.destinationPlaceId = place.place_id;
+			hasDest = true;
 		}
 		me.route();
+		hasMap = true;
+		checkStep2();
 	});
 
 };
@@ -246,7 +250,17 @@ function DistanceDisplay(distance,duration){
 
 };
 
+$("#origin-input").focus(function(){
+	hasOrig = false;
+	$(this).val("");
+	checkStep2();
+});
 
+$("#destination-input").focus(function(){
+	hasDest = false;
+	$(this).val("");
+	checkStep2();
+});
 
 // Maths for transport
 var motorBike = 109;
@@ -349,6 +363,16 @@ $("#motor-home").click(function(){
 });
 
 
+function checkStep2(){
+	if(!hasOrig || !hasDest || !$("#People").val() || !$("#Hire").val()){
+		$("#step2").hide();
+		return;
+	}
+
+	$("#step2").show();
+}
+
+$("#People,#Hire").keyup(checkStep2);
 
 // Mix it up plugin
 

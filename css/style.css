@@ -22,6 +22,10 @@ body{
 	height: 100%;
 }
 
+#step2 {
+	display: none;
+}
+
 img	{
 	width: 100%;
 }
