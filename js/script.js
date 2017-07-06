@@ -185,9 +185,11 @@ function AutocompleteDirectionsHandler(map) {
 	this.directionsDisplay.setMap(map);
 
 	var originAutocomplete = new google.maps.places.Autocomplete(
-		originInput, {placeIdOnly: true});
+		originInput, {placeIdOnly: true, componentRestrictions: {country: "NZ"}
+	});
 	var destinationAutocomplete = new google.maps.places.Autocomplete(
-		destinationInput, {placeIdOnly: true});
+		destinationInput, {placeIdOnly: true, componentRestrictions: {country: "NZ"}
+	});
 
 	this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
 	this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
@@ -231,15 +233,20 @@ AutocompleteDirectionsHandler.prototype.route = function(){
 			} else {
 			window.alert('Directions request failed due to ' + status);
 			}
+
 	});
 };
-
+var realDistance;
 function DistanceDisplay(distance,duration){
 	var Details = $(".details").val();
 	$("#routeDistance").empty().prepend("<div><h2 class='text'>"+distance+"</h2><h4>Distance</h4</div>");
 	$("#routeDuration").empty().prepend("<div><h2 class='text'>"+duration+"</h2><h4>Duration</h4</div>");
+	console.log(distance);
+	realDistance = parseInt(distance);
 
 };
+
+
 
 // Maths for transport
 var motorBike = 109;
@@ -248,39 +255,100 @@ var largeCar = 144;
 var motorHome = 200;
 
 var fuelCost = 1.859;
-var HireCost;
-// Transport Click
 
+var vehicleName;
+var litrePerFuel;
+var hireCost;
+
+
+var vehicles = [
+	{
+	 	vehicleName: "motorbike",
+	 	hireCost: 109,
+	 	litrePerFuel: 3.7,
+
+	},
+	{
+		vehicleName: "smallCar",
+		hireCost: 129,
+		litrePerFuel: 8.5,
+	},
+	{
+		vehicleName: "largeCar",
+		hireCost: 144,
+		litrePerFuel: 9.7,
+	},
+	{
+		vehicleName: "motorHome",
+		hireCost: 200,
+		litrePerFuel: 17,
+	},
+	
+
+];
+
+var totalHireCost;
+var totalFuelCost;
+var fuelPerDistance;
+var finalCost; 
+
+
+$(".vehicleIcon").click(function(){
+	
+	vehicleName = ($(this).attr('data-value'));
+	for (var i = 0; i < vehicles.length; i++) {
+		if (vehicles[i].vehicleName == vehicleName) {
+			litrePerFuel = (vehicles[i].litrePerFuel);
+			hireCost = (vehicles[i]).hireCost;
+			console.log("Litres per 100km " + litrePerFuel);
+			console.log("Your hire cost is: " + hireCost);
+
+		}
+	}
+
+	hireCalc = parseInt($("#Hire").val());
+	totalHireCost = hireCalc * hireCost;
+
+
+	fuelPerDistance = litrePerFuel * fuelCost / 100;
+	totalFuelCost = realDistance * fuelPerDistance; 
+
+	//calculates the final cost. 	
+	finalCost = totalHireCost + totalFuelCost; 
+
+	console.log("Your Final Cost is: " + finalCost);
+
+			
+
+});
 
 $("#motorbike").click(function(){
-	HireCost = parseInt($("#Hire").val());
-	if (motorBike * HireCost)  {
-		$("#hireDetail").empty().prepend("<div><h1 class='text'>"+"$"+HireCost * motorBike+"</h1><h4>Hire Cost</h4></div>");
-		// console.log("Your hiring cost for motorbike is: " +motorBike * HireCost);
-	}
+	$("#hireDetail").empty().prepend("<div><h2 class='text'>"+"$"+totalHireCost+"</h2><h4>Hire Cost</h4></div>");
+	$("#fuelCost").empty().prepend("<div><h2 class='text'>"+"$"+totalFuelCost.toPrecision(4)+"</h2><h4>Fuel Cost</h4></div>");
+	$("#totalCost").empty().prepend("<div><h2 class='text'>"+"$"+finalCost.toPrecision(3)+"</h2><h4>Final Cost</h4></div>");
+
 });
 
 $("#small-car").click(function(){
-	HireCost = parseInt($("#Hire").val());
-	if (smallCar * HireCost) {
-		$("#hireDetail").empty().prepend("<div><h2 class='text'>"+"$"+HireCost * smallCar+"</h2><h4>Hire Cost</h4></div>");
-		// console.log("Your hiring cost for small car is: " + smallCar * HireCost);
-	}
+	$("#hireDetail").empty().prepend("<div><h2 class='text'>"+"$"+totalHireCost+"</h2><h4>Hire Cost</h4></div>");
+	$("#fuelCost").empty().prepend("<div><h2 class='text'>"+"$"+totalFuelCost.toPrecision(4)+"</h2><h4>Fuel Cost</h4></div>");
+	$("#totalCost").empty().prepend("<div><h2 class='text'>"+"$"+finalCost.toPrecision(3)+"</h2><h4>Final Cost</h4></div>");
 });
+
 $("#large-car").click(function(){
-	HireCost = parseInt($("#Hire").val());
-	if (largeCar * HireCost) {
-		$("#hireDetail").empty().prepend("<div><h2 class='text'>"+"$"+HireCost * largeCar+"</h2><h4>Hire Cost</h4></div>");
-		// console.log("Your hiring cost for large car is: " + largeCar * HireCost);
-	}
+	$("#hireDetail").empty().prepend("<div><h2 class='text'>"+"$"+totalHireCost+"</h2><h4>Hire Cost</h4></div>");
+	$("#fuelCost").empty().prepend("<div><h2 class='text'>"+"$"+totalFuelCost.toPrecision(4)+"</h2><h4>Fuel Cost</h4></div>");
+	$("#totalCost").empty().prepend("<div><h2 class='text'>"+"$"+finalCost.toPrecision(3)+"</h2><h4>Final Cost</h4></div>");
+
 });
+
 $("#motor-home").click(function(){
-	HireCost = parseInt($("#Hire").val());
-	if (motorHome * HireCost) {
-		$("#hireDetail").empty().prepend("<div><h2 class='text'>"+"$"+HireCost * motorHome+"</h2><h4>Hire Cost</h4></div>");
-		// console.log("Your hiring cost for motorhome is: " + motorHome * HireCost);
-	}
+	$("#hireDetail").empty().prepend("<div><h2 class='text'>"+"$"+totalHireCost+"</h2><h4>Hire Cost</h4></div>");
+	$("#fuelCost").empty().prepend("<div><h2 class='text'>"+"$"+totalFuelCost.toPrecision(4)+"</h2><h4>Fuel Cost</h4></div>");
+	$("#totalCost").empty().prepend("<div><h2 class='text'>"+"$"+finalCost.toPrecision(3)+"</h2><h4>Final Cost</h4></div>");
 });
+
+
 
 // Mix it up plugin
 
