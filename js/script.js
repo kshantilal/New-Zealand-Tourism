@@ -338,28 +338,28 @@ $(".vehicleIcon").click(function(){
 
 $("#motorbike").click(function(){
 	$("#hireDetail").empty().prepend("<div><h2 class='text'>"+"$"+totalHireCost+"</h2><h4>Hire Cost</h4></div>");
-	$("#fuelCost").empty().prepend("<div><h2 class='text'>"+"$"+totalFuelCost.toPrecision(4)+"</h2><h4>Fuel Cost</h4></div>");
-	$("#totalCost").empty().prepend("<div><h2 class='text'>"+"$"+finalCost.toPrecision(3)+"</h2><h4>Final Cost</h4></div>");
-
+	$("#fuelCost").empty().prepend("<div><h2 class='text'>"+"$"+totalFuelCost.toFixed()+"</h2><h4>Fuel Cost</h4></div>");
+	$("#totalCost").empty().prepend("<div><h2 class='text'>"+"$"+finalCost.toFixed()+"</h2><h4>Total</h4></div>");
+	// $(this).
 });
 
 $("#small-car").click(function(){
 	$("#hireDetail").empty().prepend("<div><h2 class='text'>"+"$"+totalHireCost+"</h2><h4>Hire Cost</h4></div>");
-	$("#fuelCost").empty().prepend("<div><h2 class='text'>"+"$"+totalFuelCost.toPrecision(4)+"</h2><h4>Fuel Cost</h4></div>");
-	$("#totalCost").empty().prepend("<div><h2 class='text'>"+"$"+finalCost.toPrecision(3)+"</h2><h4>Final Cost</h4></div>");
+	$("#fuelCost").empty().prepend("<div><h2 class='text'>"+"$"+totalFuelCost.toFixed(0)+"</h2><h4>Fuel Cost</h4></div>");
+	$("#totalCost").empty().prepend("<div><h2 class='text'>"+"$"+finalCost.toFixed(0)+"</h2><h4>Total</h4></div>");
 });
 
 $("#large-car").click(function(){
 	$("#hireDetail").empty().prepend("<div><h2 class='text'>"+"$"+totalHireCost+"</h2><h4>Hire Cost</h4></div>");
-	$("#fuelCost").empty().prepend("<div><h2 class='text'>"+"$"+totalFuelCost.toPrecision(4)+"</h2><h4>Fuel Cost</h4></div>");
-	$("#totalCost").empty().prepend("<div><h2 class='text'>"+"$"+finalCost.toPrecision(3)+"</h2><h4>Final Cost</h4></div>");
+	$("#fuelCost").empty().prepend("<div><h2 class='text'>"+"$"+totalFuelCost.toFixed(0)+"</h2><h4>Fuel Cost</h4></div>");
+	$("#totalCost").empty().prepend("<div><h2 class='text'>"+"$"+finalCost.toFixed(0)+"</h2><h4>Total</h4></div>");
 
 });
 
 $("#motor-home").click(function(){
 	$("#hireDetail").empty().prepend("<div><h2 class='text'>"+"$"+totalHireCost+"</h2><h4>Hire Cost</h4></div>");
-	$("#fuelCost").empty().prepend("<div><h2 class='text'>"+"$"+totalFuelCost.toPrecision(4)+"</h2><h4>Fuel Cost</h4></div>");
-	$("#totalCost").empty().prepend("<div><h2 class='text'>"+"$"+finalCost.toPrecision(3)+"</h2><h4>Final Cost</h4></div>");
+	$("#fuelCost").empty().prepend("<div><h2 class='text'>"+"$"+totalFuelCost.toFixed(0)+"</h2><h4>Fuel Cost</h4></div>");
+	$("#totalCost").empty().prepend("<div><h2 class='text'>"+"$"+finalCost.toFixed(0)+"</h2><h4>Total</h4></div>");
 });
 
 
