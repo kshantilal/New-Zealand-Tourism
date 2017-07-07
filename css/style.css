@@ -99,7 +99,8 @@ img	{
 
 .details{
 	width: 100%;
-	height: 150px;
+	padding-bottom: 20px;
+	padding-top: 20px;
 	background-color: #191f2d;
 	color: white;
 	text-align: center;
@@ -119,6 +120,11 @@ img	{
 .col-4{
 	width: 40%;
 	float: right;
+}
+.col-6{
+	width: 50%;
+	float: right;
+	display: -webkit-block;
 }
 .col-8{
 	width: 60%;
@@ -296,15 +302,18 @@ input:focus{
 	font-size: 25px;
 }
 
-
 .title{
-	padding-top: 15px;
+	padding-bottom: 20px;
 }
 
-/*----------Mix it up----------*/
+/*----------Transport Details----------*/
 
-
-
+.transport-image{
+	padding-right: 10px;
+	display: inline-block;
+	width: 20%;
+	font-size: 12px;
+}
 
 
 
@@ -325,6 +334,9 @@ input:focus{
 	#destination-input{
 		width: 300px;
 	}
+	.transport-image{
+		font-size: 16px;
+	}
 
 }
 
@@ -342,6 +354,9 @@ input:focus{
 		margin-top: 150px;
 		padding-left: 50px;
 	}
+	.transport-image{
+		font-size: 20px;
+	}
 }
 
 @media only screen and (min-width: 1680px){
@@ -357,6 +372,9 @@ input:focus{
 	#validation{
 		margin-top: 150px;
 		padding-left: 105px;
+	}
+	.transport-image{
+		font-size: 26px;
 	}
 }
 
