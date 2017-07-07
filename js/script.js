@@ -31,11 +31,13 @@ var mySwiper = new Swiper('.swiper-container', {
 // Scroll on click
 $("#down-arrow").click(function(){
 	$('html,body').animate({
-		scrollTop: $("#map").offset().top
+		scrollTop: $(".details").offset().top
 	},
-	'slow');
+	1500);
 
 });
+
+
 
 function init(){
 	var mapOptions = {
@@ -362,6 +364,13 @@ $(".vehicleIcon").click(function(){
 	event.preventDefault();
 	$(this).toggleClass('active');
 	$(this).find('img').toggle(); 
+
+	$('body').animate({
+		scrollTop: $(".details-container").offset().top
+	},
+	1500);
+
+
 
 
 });

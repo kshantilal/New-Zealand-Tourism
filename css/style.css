@@ -323,7 +323,24 @@ input:focus{
 	margin-right: 6em;
 }
 
+/*----------Footer----------*/
 
+.footer {
+	height: 60px;
+	margin-top: 50px;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 2.5rem;
+	background-color: #191f2d;
+	text-align: center;
+	font-size: 10px;
+	color: #a8a8a8;
+}
+.footer-text:hover {
+	color: #fff;
+	-webkit-transition: color 1s, opacity 1.0s ease;
+}
 
 /*----------Media Queries----------*/
 
