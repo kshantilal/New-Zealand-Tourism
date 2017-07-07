@@ -141,11 +141,17 @@ img	{
 input{
 	padding: 10px;
 	width: 250px;
-	color: white;
+	color: #b5bdce;
 	background-color: transparent;
-	font-size: 15px;
+	font-size: 12px;
 	border-radius: 10px;
-	border: 1px solid #fff;
+	border: 2px solid #4f5b77;
+	box-shadow : 2px 1px 6px #2c3033;
+	margin-bottom: 10px;
+}
+input:focus{
+	border-color: #b5bdce;
+	outline: none;
 }
 
 .row{
@@ -155,7 +161,7 @@ input{
 }
 
 .error{
-	color: #a94442;
+	color: #920b0b;
 	font-family: 'Avenir', 'Open Sans', sans-serif;
 }
 
@@ -164,10 +170,11 @@ input{
 
 #motorbike{
 	width: 55px;
-	padding-top: 47px;
+	padding-top: 47px; 
+	cursor: pointer;
 }
 
-#motorbike:hover{
+#motorbike:hover, #small-car:hover, #large-car:hover, #motor-home:hover{
 	-webkit-transition: transform 0.3s ease, opacity 1.0s ease;	
 	transform: translate(0,-5px);
 }
@@ -175,28 +182,20 @@ input{
 #small-car{
 	width: 90px;
 	padding-top: 40px;
-}
-#small-car:hover{
-	-webkit-transition: transform 0.3s ease, opacity 1.0s ease;	
-	transform: translate(0,-5px);
+	cursor: pointer;
 }
 
 #large-car{
 	width: 110px;
 	padding-top: 31px;
+	cursor: pointer;
 }
-#large-car:hover{
-	-webkit-transition: transform 0.3s ease, opacity 1.0s ease;	
-	transform: translate(0,-5px);
-}
+
 
 #motor-home{
 	width: 119px;
 	padding-top: 14px;
-}
-#motor-home:hover{
-	-webkit-transition: transform 0.3s ease, opacity 1.0s ease;	
-	transform: translate(0,-5px);
+	cursor: pointer;
 }
 
 #transport-options{
@@ -240,34 +239,42 @@ input{
 	height: 32px;
 	outline: none;
 	border-radius: 10px;
-	border: 1px solid #fff;
+	border: 2px solid #fff;
 }
 
 
 #origin-input, #destination-input {
 	background-color: transparent;
-	color: white;
+	color: #b5bdce;
 	font-family: 'Avenir', 'Open Sans', sans-serif;
+	font-size: 12px;
 	text-overflow: ellipsis;
 	padding: 20px;
+	border: 2px solid #4f5b77;
+	box-shadow : 2px 1px 6px #2c3033;
 }
 
 #origin-input:focus, #destination-input:focus {
-	border-color: #4d90fe;
-	color: white;
+	border-color: #b5bdce;
+	color: #b5bdce;
+	font-size: 12px;
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-	color: #fff;
+	color: #b5bdce;
+	font-size: 12px;
 }
 ::-moz-placeholder { /* Firefox 19+ */
-	color: #fff;
+	color: #b5bdce;
+	font-size: 12px;
 } 
 :-ms-input-placeholder { /* IE 10+ */
-	color: #fff;
+	color: #b5bdce;
+	font-size: 12px;
 }
 :-moz-placeholder { /* Firefox 18- */
-	color: #fff;
+	color: #b5bdce;
+	font-size: 12px;
 }
 
 
