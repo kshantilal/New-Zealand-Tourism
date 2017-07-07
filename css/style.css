@@ -315,6 +315,13 @@ input:focus{
 	font-size: 12px;
 }
 
+/*----------Swiper----------*/
+.swiper-button-prev{
+	margin-left: 6em;
+}
+.swiper-button-next{
+	margin-right: 6em;
+}
 
 
 

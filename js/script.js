@@ -12,9 +12,9 @@ var mySwiper = new Swiper('.swiper-container', {
 	spaceBetween: 30,
 	loop: true, //Loops over the slider
 	speed: 1000,
-	// autoplay: 3000,
+	autoplay: 3000,
 	easein: 1,
-	// autoplayDisableOnInteraction: false, //When user interacts with the slider it continues
+	autoplayDisableOnInteraction: false, //When user interacts with the slider it continues
 	// Cube Effect on Slideshow
 	// effect: "cube", 
 	// 	  cube:	{
