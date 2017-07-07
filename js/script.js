@@ -268,7 +268,7 @@ var	smallCar = 129;
 var largeCar = 144;
 var motorHome = 200;
 
-var fuelCost = 1.859;
+var fuelCost = 1.859; 
 
 var vehicleName;
 var litrePerFuel;
@@ -277,9 +277,9 @@ var hireCost;
 
 var vehicles = [
 	{
-	 	vehicleName: "motorbike",
-	 	hireCost: 109,
-	 	litrePerFuel: 3.7,
+		vehicleName: "motorbike",
+		hireCost: 109,
+		litrePerFuel: 3.7,
 
 	},
 	{
@@ -314,8 +314,8 @@ $(".vehicleIcon").click(function(){
 		if (vehicles[i].vehicleName == vehicleName) {
 			litrePerFuel = (vehicles[i].litrePerFuel);
 			hireCost = (vehicles[i]).hireCost;
-			console.log("Litres per 100km " + litrePerFuel);
-			console.log("Your hire cost is: " + hireCost);
+			// console.log("Litres per 100km " + litrePerFuel);
+			// console.log("Your hire cost is: " + hireCost);
 
 		}
 	}
@@ -330,37 +330,18 @@ $(".vehicleIcon").click(function(){
 	//calculates the final cost. 	
 	finalCost = totalHireCost + totalFuelCost; 
 
-	console.log("Your Final Cost is: " + finalCost);
-
-			
-
-});
-
-$("#motorbike").click(function(){
+	// console.log("Your Final Cost is: " + finalCost);
 	$("#hireDetail").empty().prepend("<div><h2 class='text'>"+"$"+totalHireCost+"</h2><h4>Hire Cost</h4></div>");
 	$("#fuelCost").empty().prepend("<div><h2 class='text'>"+"$"+totalFuelCost.toFixed()+"</h2><h4>Fuel Cost</h4></div>");
 	$("#totalCost").empty().prepend("<div><h2 class='text'>"+"$"+finalCost.toFixed()+"</h2><h4>Total</h4></div>");
-	// $(this).
-});
+	
+	$('.transport-images .active').removeClass('active').find('img').toggle();
+	$(this).toggleClass('active');
+	$(this).find('img').toggle(); 
 
-$("#small-car").click(function(){
-	$("#hireDetail").empty().prepend("<div><h2 class='text'>"+"$"+totalHireCost+"</h2><h4>Hire Cost</h4></div>");
-	$("#fuelCost").empty().prepend("<div><h2 class='text'>"+"$"+totalFuelCost.toFixed(0)+"</h2><h4>Fuel Cost</h4></div>");
-	$("#totalCost").empty().prepend("<div><h2 class='text'>"+"$"+finalCost.toFixed(0)+"</h2><h4>Total</h4></div>");
-});
-
-$("#large-car").click(function(){
-	$("#hireDetail").empty().prepend("<div><h2 class='text'>"+"$"+totalHireCost+"</h2><h4>Hire Cost</h4></div>");
-	$("#fuelCost").empty().prepend("<div><h2 class='text'>"+"$"+totalFuelCost.toFixed(0)+"</h2><h4>Fuel Cost</h4></div>");
-	$("#totalCost").empty().prepend("<div><h2 class='text'>"+"$"+finalCost.toFixed(0)+"</h2><h4>Total</h4></div>");
 
 });
 
-$("#motor-home").click(function(){
-	$("#hireDetail").empty().prepend("<div><h2 class='text'>"+"$"+totalHireCost+"</h2><h4>Hire Cost</h4></div>");
-	$("#fuelCost").empty().prepend("<div><h2 class='text'>"+"$"+totalFuelCost.toFixed(0)+"</h2><h4>Fuel Cost</h4></div>");
-	$("#totalCost").empty().prepend("<div><h2 class='text'>"+"$"+finalCost.toFixed(0)+"</h2><h4>Total</h4></div>");
-});
 
 
 function checkStep2(){
