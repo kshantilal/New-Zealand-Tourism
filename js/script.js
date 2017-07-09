@@ -33,10 +33,10 @@ function init(){
 	var mapOptions = {
 		//Set where the map starts
 		center: {
-			lat: -41.299688,
-			lng: 174.811406,
+			lat: -41.0726221,
+			lng: 172.9166629,
 		},
-		zoom: 14,
+		zoom: 5,
 		disableDefaultUI: false,
 		disableDoubleClickZoom: false,
 		streetViewControl: true,
@@ -376,7 +376,6 @@ $(".vehicleIcon").click(function(){
 	$("#totalCost").empty().prepend("<div><h2 class='text'>"+"$"+finalCost.toPrecision(4)+"</h2><h4>Total</h4></div>");
 	
 	$('.transport-images .active').removeClass('active').find('img').toggle();
-	event.preventDefault();
 	$(this).toggleClass('active');
 	$(this).find('img').toggle(); 
 
