@@ -120,7 +120,7 @@ img	{
 #validation{
 	font-family: BEBAS;
 	margin-top: 20px;
-	padding-left: 30px;
+	padding-left: 12px;
 
 }
 
@@ -151,6 +151,7 @@ img	{
 	padding-top: 5px;
 }
 
+
 input{
 	padding: 10px;
 	width: 250px;
@@ -176,9 +177,23 @@ input:focus{
 .error{
 	color: #920b0b;
 	font-family: 'Avenir', 'Open Sans', sans-serif;
+	padding-left: 22px;
 }
 
 
+.fa{
+	padding-right: 10px;
+	color: #191f2d;
+}
+
+.fa:hover{
+	-webkit-transition: color 0.3s ease, transform 0.3s ease, opacity 1.0s ease;	
+	color: #b5bdce;
+}
+
+label{
+	padding-left: 25px;
+}
 /*----------Transport Options----------*/
 
 #motorbike{
@@ -203,7 +218,6 @@ input:focus{
 	padding-top: 31px;
 	cursor: pointer;
 }
-
 
 #motor-home{
 	width: 119px;
@@ -371,7 +385,7 @@ input:focus{
 		width: 300px;
 	}
 	#validation{
-		padding-left: 50px;
+		padding-left: 40px;
 	}
 	#origin-input{
 		width: 300px;
@@ -381,6 +395,12 @@ input:focus{
 	}
 	.transport-image{
 		font-size: 16px;
+	}
+	.fa-child{
+		font-size: 20px;
+	}
+	.fa-location-arrow{
+		font-size: 18px;
 	}
 
 }
@@ -416,7 +436,7 @@ input:focus{
 	}
 	#validation{
 		margin-top: 150px;
-		padding-left: 105px;
+		padding-left: 85px;
 	}
 	.transport-image{
 		font-size: 26px;

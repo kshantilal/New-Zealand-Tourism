@@ -5,6 +5,8 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome-animation.min.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
@@ -89,21 +91,24 @@
 					<div class="form-container">
 						<label>FROM</label>
 						<div class="input">
-							<input id="origin-input" class="controls" type="text" placeholder="Enter an origin location">
+							<i class="fa fa-location-arrow faa-ring animated-hover"></i>
+							<input id="origin-input" class="controls faa-vertical animated-hover" type="text" placeholder="Enter an origin location">
 						</div>
 					</div>
 
 					<div class="form-container">
 						<label>TO</label>
 						<div class="input">
-							<input id="destination-input" class="controls" type="text" placeholder="Enter a destination location">
+							<i class="fa fa-map-marker faa-horizontal animated-hover" style="font-size: 23px;"></i>
+							<input id="destination-input" class="controls faa-vertical animated-hover" type="text" placeholder="Enter a destination location">
 						</div>					
 					</div>
 
 					<div class="form-container">
 						<label>Number of people</label>
 						<div class="input">
-							<input type="number" name="People" id="People" data-ref="input-people">
+							<i class="fa fa-child faa-tada animated-hover"></i>
+							<input type="number" name="People" id="People" data-ref="input-people" class="faa-vertical animated-hover">
 							<span class="input-errors"></span>
 						</div>
 					</div>
@@ -111,7 +116,8 @@
 					<div class="form-container">
 						<label>Days of Hire</label>
 						<div class="input">
-							<input type="number" name="Hire" id="Hire" data-ref="input-hire">
+							<i class="fa fa-calendar faa-shake animated-hover" style="font-size: 15px;"></i>
+							<input type="number" name="Hire" id="Hire" data-ref="input-hire" class="faa-vertical animated-hover">
 							<span class="input-errors"></span>
 						</div>
 						
