@@ -19,18 +19,10 @@ var mySwiper = new Swiper('.swiper-container', {
 	paginationClickable: true, //If you click on the dots they will go to that slde
 	spaceBetween: 30,
 	loop: true, //Loops over the slider
-	speed: 1000,
-	autoplay: 3000,
+	speed: 2000,
+	autoplay: 5000,
 	easein: 1,
-	autoplayDisableOnInteraction: true, //When user interacts with the slider it continues
-	// Cube Effect on Slideshow
-	// effect: "cube", 
-	// 	  cube:	{
-	// 	  slideShadows: true,
-	// 	  shadow: true,
-	// 	  shadowOffset: 20,
-	// 	  shadowScale: 0.94
-	// 	}
+	autoplayDisableOnInteraction: false, //When user interacts with the slider it continues
 
 });
 
@@ -214,7 +206,7 @@ $("#Hire").focus(function(){
 	if ($(this).val() <= 15){
 		$(this).parent().find('span.input-errors .max').remove();
 	} else if ( (!$(this).val().match(maxNumber)) && ($("li.max").length === 0) ){
-		$(this).parent().find('span.input-errors ul').append("<li class='max'>Must be less than 15 people</li>")
+		$(this).parent().find('span.input-errors ul').append("<li class='max'>Must be less than 15 days</li>")
 	}
 
 });
@@ -293,7 +285,7 @@ function DistanceDisplay(distance,duration){
 	$("#routeDistance").empty().prepend("<div><h2 class='text'>"+distance+"</h2><h4>Distance</h4</div>");
 	$("#routeDuration").empty().prepend("<div><h2 class='text'>"+duration+"</h2><h4>Duration</h4</div>");
 	console.log(distance);
-	realDistance = parseInt(distance);
+	realDistance = parseFloat(distance.replace(',',''));
 
 };
 
@@ -356,31 +348,32 @@ var finalCost;
 
 $(".vehicleIcon").click(function(){
 	
+	
 	vehicleName = ($(this).attr('data-value'));
 	for (var i = 0; i < vehicles.length; i++) {
 		if (vehicles[i].vehicleName == vehicleName) {
 			litrePerFuel = (vehicles[i].litrePerFuel);
 			hireCost = (vehicles[i]).hireCost;
-			// console.log("Litres per 100km " + litrePerFuel);
-			// console.log("Your hire cost is: " + hireCost);
 
 		}
 	}
 
+	// Hire Cost
 	hireCalc = parseInt($("#Hire").val());
 	totalHireCost = hireCalc * hireCost;
 
-
-	fuelPerDistance = litrePerFuel * fuelCost / 100;
-	totalFuelCost = realDistance * fuelPerDistance; 
+	// Fuel Cost
+	fuelPerDistance = fuelCost * litrePerFuel / 100;
+	totalFuelCost = realDistance * fuelPerDistance;
 
 	//calculates the final cost. 	
 	finalCost = totalHireCost + totalFuelCost; 
 
+
 	// console.log("Your Final Cost is: " + finalCost);
 	$("#hireDetail").empty().prepend("<div><h2 class='text'>"+"$"+totalHireCost+"</h2><h4>Hire Cost</h4></div>");
-	$("#fuelCost").empty().prepend("<div><h2 class='text'>"+"$"+totalFuelCost.toFixed()+"</h2><h4>Fuel Cost</h4></div>");
-	$("#totalCost").empty().prepend("<div><h2 class='text'>"+"$"+finalCost.toFixed()+"</h2><h4>Total</h4></div>");
+	$("#fuelCost").empty().prepend("<div><h2 class='text'>"+"$"+totalFuelCost.toPrecision(3)+"</h2><h4>Fuel Cost</h4></div>");
+	$("#totalCost").empty().prepend("<div><h2 class='text'>"+"$"+finalCost.toPrecision(4)+"</h2><h4>Total</h4></div>");
 	
 	$('.transport-images .active').removeClass('active').find('img').toggle();
 	event.preventDefault();
@@ -391,6 +384,7 @@ $(".vehicleIcon").click(function(){
 		scrollTop: $(".details-container").offset().top
 	},
 	1500);
+
 
 
 });

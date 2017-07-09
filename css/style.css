@@ -260,6 +260,9 @@ label{
 	float: right;
 	width: 85%;
 }
+.image-hide{
+	display: none;
+}
 
 /*----------Google Maps----------*/
 
