@@ -3,6 +3,14 @@ $(document).ready(function(){
 var	map;
 var Numbers, maxNumber, hasMap, hasOrig, hasDest; //validation variables
 
+// Scroll on click
+$("#down-arrow").click(function(){
+	$('html,body').animate({
+		scrollTop: $(".vehicle-details").offset().top
+	},
+	1500);
+
+});
 var mySwiper = new Swiper('.swiper-container', {
 	pagination: '.swiper-pagination',
 	nextButton: '.swiper-button-next',
@@ -14,7 +22,7 @@ var mySwiper = new Swiper('.swiper-container', {
 	speed: 1000,
 	autoplay: 3000,
 	easein: 1,
-	// autoplayDisableOnInteraction: true, //When user interacts with the slider it continues
+	autoplayDisableOnInteraction: true, //When user interacts with the slider it continues
 	// Cube Effect on Slideshow
 	// effect: "cube", 
 	// 	  cube:	{
@@ -26,14 +34,6 @@ var mySwiper = new Swiper('.swiper-container', {
 
 });
 
-// Scroll on click
-$("#down-arrow").click(function(){
-	$('html,body').animate({
-		scrollTop: $(".details").offset().top
-	},
-	1500);
-
-});
 
 
 
@@ -44,7 +44,7 @@ function init(){
 			lat: -41.299688,
 			lng: 174.811406,
 		},
-		zoom: 5,
+		zoom: 14,
 		disableDefaultUI: false,
 		disableDoubleClickZoom: false,
 		streetViewControl: true,
@@ -56,6 +56,7 @@ function init(){
 		keyboardShortcuts: false,
 		minZoom: 5,
 		gestureHandling: "auto",
+		icon: "img/tourism-logo.png",
 
 		mapTypeControlOptions:{
 		position: google.maps.ControlPosition.TOP_LEFT,
@@ -64,22 +65,21 @@ function init(){
 		styles: [
 
 		{elementType: 'geometry', stylers: [{color: '#242f3e'}]},
-		{elementType: 'labels.text.stroke', stylers: [{color: '#34495E'}]},
-		{elementType: 'labels.text.fill', stylers: [{color: '#BDC3C7'}]},
+		{elementType: 'labels.text.stroke', stylers: [{color: '#191f2d'}]},
+		{elementType: 'labels.text.fill', stylers: [{color: '#919da5'}]},
 
 		{
 			featureType: "road",
 			elementType: "geometry",
 			stylers: [
-			{color: "#6C7A89"},
-			{saturation: -80}
+			{color: "#4a576c"},
 
 			]
 		},
 		{
-			  featureType: 'road',
-			  elementType: 'labels.text.fill',
-			  stylers: [{color: '#95A5A6'}]
+			featureType: 'road',
+			elementType: 'labels.text.fill',
+			stylers: [{color: '#93bdec'}]
 		},
 
 		{
@@ -93,13 +93,13 @@ function init(){
 		{
 			featureType: 'water',
 			elementType: 'geometry',
-			stylers: [{color: '#17263c'}]
+			stylers: [{color: '#0e2035'}]
 		},
 		{
 			featureType: 'landscape.man_made',
 			elementType: 'geometry',
 			stylers: [
-				{color: '#2C3E50'},
+				{color: '#1e2a36'},
 				
 			]
 		},
@@ -107,7 +107,7 @@ function init(){
 			featureType: 'landscape.natural',
 			elementType: 'geometry',
 			stylers: [
-				{color: '#34495E'},
+				{color: '#1d2c3b'},
 				
 			]
 		},
@@ -115,8 +115,32 @@ function init(){
 			featureType: 'landscape.natural.terrain',
 			elementType: 'geometry',
 			stylers: [
-				{color: '#22313F'},
+				{color: '#24363d'},
 				
+			]
+		},
+		{
+			featureType: "administrative.locality",
+			elementType: "labels.text.fill",
+			stylers: [
+			  {color: "#9e9e9d"}
+
+			]
+		},
+		{
+			featureType: "administrative.locality",
+			elementType: "labels.text.stroke",
+			stylers: [
+			  {"color": "#10152a"}
+
+			]
+		},
+		{
+			featureType: "poi.park",
+			elementType: "labels.text.fill",
+			stylers: [
+			{color: "#6b9a76"}
+
 			]
 		},
 
@@ -363,12 +387,10 @@ $(".vehicleIcon").click(function(){
 	$(this).toggleClass('active');
 	$(this).find('img').toggle(); 
 
-	$('body').animate({
+	$('html,body').animate({
 		scrollTop: $(".details-container").offset().top
 	},
 	1500);
-
-
 
 
 });
