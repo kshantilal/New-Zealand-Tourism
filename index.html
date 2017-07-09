@@ -19,13 +19,13 @@
 			<span class="bottom"></span>
 		</div>
 
-		<div class="details">
+		<div class="vehicle-details">
 			<h1 class="title">Vehicle Details</h1>
 			<div class="swiper-container">
 				<div class="swiper-wrapper">
 					<div class="swiper-slide">
 						<div class="transport-image img-size">
-							<img src="img/motorbike.png" alt="motorbike">
+							<img src="img/motorbike.png" alt="motorbike" class="bike-image">
 						</div>
 						<p class="transport-image">Motorbike<br>
 						1 person<br>
@@ -64,7 +64,7 @@
 
 					<div class="swiper-slide">
 						<div class="transport-image">
-							<img src="img/motor-home.png" alt="motor home">
+							<img src="img/motor-home.png" alt="motor home" class="motor-home-image">
 						</div>
 						<p class="transport-image">Motor Home<br>
 						2-6 people<br>
@@ -75,14 +75,14 @@
 						</p>
 					</div>
 				</div>
-				<!-- Add Pagination -->
-				<!-- <div class="swiper-pagination"></div> -->
+
 				<!-- Add Arrows -->
 				<div class="swiper-button-next"></div>
 				<div class="swiper-button-prev"></div>
 			</div>
 		</div>   	
 
+		<!-- Form -->
 		<div class="row">
 			<div class="col-4">
 				<form id="validation" method="post">
@@ -118,11 +118,14 @@
 					</div>
 				</form>
 			</div>
+
+			<!-- Google Map -->
 			<div class="col-8">
 				<div id="map"></div>
 			</div>
 		</div>
 
+		<!-- Transport Images -->
 		<div class="row">
 			<div class="col-12">
 				<div id="transport-options">
@@ -149,6 +152,7 @@
 			</div>
 		</div>
 
+		<!-- Transport Details -->
 		<div class="details-container" id="step2">
 			<div class="details">
 				<h1>Details</h1>
@@ -157,7 +161,6 @@
 				<div class="info" id="routeDistance"></div>
 				<div class="info" id="routeDuration"></div>
 				<div class="info" id="totalCost"></div>
-
 			</div>
 		</div>
 
@@ -169,7 +172,6 @@
 
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWeGHbX62mgk-G8yatK9IE2oFy0v6o7Dg&libraries=places"></script>
-	
 	<script type="text/javascript" src="js/mixitup.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.jquery.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>

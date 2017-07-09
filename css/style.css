@@ -106,6 +106,13 @@ img	{
 	text-align: center;
 	font-family: 'Avenir', 'Open Sans', sans-serif;
 }
+.vehicle-details{
+	padding-bottom: 20px;
+	padding-top: 20px;
+	background-color: #191f2d;
+	color: white;
+	text-align: center;
+}
 
 
 /*----------Form----------*/
@@ -231,6 +238,15 @@ input:focus{
 	margin: 0 auto;
 }
 
+.bike-image{
+	float: right;
+	width: 70%;
+}
+.motor-home-image{
+	float: right;
+	width: 85%;
+}
+
 /*----------Google Maps----------*/
 
 #map{
@@ -304,6 +320,7 @@ input:focus{
 
 .title{
 	padding-bottom: 20px;
+	text-align: center;
 }
 
 /*----------Transport Details----------*/
@@ -313,9 +330,13 @@ input:focus{
 	display: inline-block;
 	width: 20%;
 	font-size: 12px;
+	text-align: initial;
+	margin-right: 10px;
+
 }
 
 /*----------Swiper----------*/
+
 .swiper-button-prev{
 	margin-left: 6em;
 }
