@@ -1,7 +1,25 @@
 $(document).ready(function(){
 
-var	map;
+var	map, mapOptions;
 var Numbers, maxNumber, hasMap, hasOrig, hasDest; //validation variables
+var mySwiper, mixer; //Variable for plugins
+var realDistance, Details; // finds the distance then turns it into a number
+var vehicleName, litrePerFuel, hireCost; //variables for details
+
+var totalHireCost, totalFuelCost, fuelPerDistance, finalCost; //variables for cost
+
+// Maths for transport
+var motorBike = 109;
+var	smallCar = 129;
+var largeCar = 144;
+var motorHome = 200;
+var fuelCost = 1.859; 
+var vehicles;
+
+var searchValue, hireValue; // variables for number of people and hire input fields
+
+// Mix it up
+var WordNumberPeople, WordNumberHire, inputPeople, inputHire, FilterVariable;
 
 // Scroll on click
 $("#down-arrow").click(function(){
@@ -11,7 +29,7 @@ $("#down-arrow").click(function(){
 	1500);
 
 });
-var mySwiper = new Swiper('.swiper-container', {
+	mySwiper = new Swiper('.swiper-container', {
 	pagination: '.swiper-pagination',
 	nextButton: '.swiper-button-next',
 	prevButton: '.swiper-button-prev',
@@ -27,116 +45,113 @@ var mySwiper = new Swiper('.swiper-container', {
 });
 
 
-
-
 function init(){
-	var mapOptions = {
-		//Set where the map starts
-		center: {
-			lat: -41.0726221,
-			lng: 172.9166629,
-		},
-		zoom: 5,
-		disableDefaultUI: false,
-		disableDoubleClickZoom: false,
-		streetViewControl: true,
-		scrollwheel: true,
-		draggable: true,
-		draggableCursor: "pointer",
-		draggingCursor: "crosshair",
-		fullscreenControl: true,
-		keyboardShortcuts: false,
-		minZoom: 5,
-		gestureHandling: "auto",
-		icon: "img/tourism-logo.png",
+	mapOptions = {
+	//Set where the map starts
+	center: {
+		lat: -41.0726221,
+		lng: 172.9166629,
+	},
+	zoom: 5,
+	disableDefaultUI: false,
+	disableDoubleClickZoom: false,
+	streetViewControl: true,
+	scrollwheel: true,
+	draggable: true,
+	draggableCursor: "pointer",
+	draggingCursor: "crosshair",
+	fullscreenControl: true,
+	keyboardShortcuts: false,
+	minZoom: 5,
+	gestureHandling: "auto",
 
-		mapTypeControlOptions:{
-		position: google.maps.ControlPosition.TOP_LEFT,
-		},
-		
-		styles: [
+	mapTypeControlOptions:{
+	position: google.maps.ControlPosition.TOP_LEFT,
+	},
+	
+	styles: [
 
-		{elementType: 'geometry', stylers: [{color: '#242f3e'}]},
-		{elementType: 'labels.text.stroke', stylers: [{color: '#191f2d'}]},
-		{elementType: 'labels.text.fill', stylers: [{color: '#919da5'}]},
+	{elementType: 'geometry', stylers: [{color: '#242f3e'}]},
+	{elementType: 'labels.text.stroke', stylers: [{color: '#191f2d'}]},
+	{elementType: 'labels.text.fill', stylers: [{color: '#919da5'}]},
 
-		{
-			featureType: "road",
-			elementType: "geometry",
-			stylers: [
-			{color: "#4a576c"},
-
-			]
-		},
-		{
-			featureType: 'road',
-			elementType: 'labels.text.fill',
-			stylers: [{color: '#93bdec'}]
-		},
-
-		{
-			featureType: "road.highway",
-			elementType: "geometry",
-			stylers: [
-			{color: "#ABB7B7"}
-
-			]
-		},
-		{
-			featureType: 'water',
-			elementType: 'geometry',
-			stylers: [{color: '#0e2035'}]
-		},
-		{
-			featureType: 'landscape.man_made',
-			elementType: 'geometry',
-			stylers: [
-				{color: '#1e2a36'},
-				
-			]
-		},
-		{
-			featureType: 'landscape.natural',
-			elementType: 'geometry',
-			stylers: [
-				{color: '#1d2c3b'},
-				
-			]
-		},
-		{
-			featureType: 'landscape.natural.terrain',
-			elementType: 'geometry',
-			stylers: [
-				{color: '#24363d'},
-				
-			]
-		},
-		{
-			featureType: "administrative.locality",
-			elementType: "labels.text.fill",
-			stylers: [
-			  {color: "#9e9e9d"}
-
-			]
-		},
-		{
-			featureType: "administrative.locality",
-			elementType: "labels.text.stroke",
-			stylers: [
-			  {"color": "#10152a"}
-
-			]
-		},
-		{
-			featureType: "poi.park",
-			elementType: "labels.text.fill",
-			stylers: [
-			{color: "#6b9a76"}
-
-			]
-		},
+	{
+		featureType: "road",
+		elementType: "geometry",
+		stylers: [
+		{color: "#4a576c"},
 
 		]
+	},
+	{
+		featureType: 'road',
+		elementType: 'labels.text.fill',
+		stylers: [{color: '#93bdec'}]
+	},
+
+	{
+		featureType: "road.highway",
+		elementType: "geometry",
+		stylers: [
+		{color: "#ABB7B7"}
+
+		]
+	},
+	{
+		featureType: 'water',
+		elementType: 'geometry',
+		stylers: [{color: '#0e2035'}]
+	},
+	{
+		featureType: 'landscape.man_made',
+		elementType: 'geometry',
+		stylers: [
+			{color: '#1e2a36'},
+			
+		]
+	},
+	{
+		featureType: 'landscape.natural',
+		elementType: 'geometry',
+		stylers: [
+			{color: '#1d2c3b'},
+			
+		]
+	},
+	{
+		featureType: 'landscape.natural.terrain',
+		elementType: 'geometry',
+		stylers: [
+			{color: '#24363d'},
+			
+		]
+	},
+	{
+		featureType: "administrative.locality",
+		elementType: "labels.text.fill",
+		stylers: [
+		  {color: "#9e9e9d"}
+
+		]
+	},
+	{
+		featureType: "administrative.locality",
+		elementType: "labels.text.stroke",
+		stylers: [
+		  {"color": "#10152a"}
+
+		]
+	},
+	{
+		featureType: "poi.park",
+		elementType: "labels.text.fill",
+		stylers: [
+		{color: "#6b9a76"}
+
+		]
+	},
+
+	]
 
 	};
 
@@ -161,8 +176,6 @@ $("#People").focus(function(){
 							)
 
 	}
-}).blur(function(){
-
 }).keyup(function(){
 
 	if ($(this).val().match(Numbers)) {
@@ -193,8 +206,6 @@ $("#Hire").focus(function(){
 							)
 
 	}
-}).blur(function(){
-
 }).keyup(function(){
 	if ($(this).val().match(Numbers)) {
 		$(this).parent().find('span.input-errors .numbers').remove();
@@ -210,8 +221,8 @@ $("#Hire").focus(function(){
 	}
 
 });
-// Google Maps
 
+// Google Maps
 function AutocompleteDirectionsHandler(map) {
 	this.map = map;
 	this.originPlaceId = null;
@@ -269,7 +280,6 @@ AutocompleteDirectionsHandler.prototype.route = function(){
 		destination: {'placeId': this.destinationPlaceId},
 		travelMode: this.travelMode
 	}, function(response, status) {
-		console.log(response);
 			if (status === 'OK') {
 			me.directionsDisplay.setDirections(response);
 			DistanceDisplay(response.routes[0].legs[0].distance.text, response.routes[0].legs[0].duration.text);
@@ -279,15 +289,15 @@ AutocompleteDirectionsHandler.prototype.route = function(){
 
 	});
 };
-var realDistance;
+
 function DistanceDisplay(distance,duration){
-	var Details = $(".details").val();
+	Details = $(".details").val();
 	$("#routeDistance").empty().prepend("<div><h2 class='text'>"+distance+"</h2><h4>Distance</h4</div>");
 	$("#routeDuration").empty().prepend("<div><h2 class='text'>"+duration+"</h2><h4>Duration</h4</div>");
-	console.log(distance);
 	realDistance = parseFloat(distance.replace(',',''));
-
 };
+
+
 
 $("#origin-input").focus(function(){
 	hasOrig = false;
@@ -301,64 +311,53 @@ $("#destination-input").focus(function(){
 	checkStep2();
 });
 
-// Maths for transport
-var motorBike = 109;
-var	smallCar = 129;
-var largeCar = 144;
-var motorHome = 200;
 
-var fuelCost = 1.859; 
-
-var vehicleName;
-var litrePerFuel;
-var hireCost;
-
-
-var vehicles = [
+// OnClick show details
+vehicles = [
 	{
 		vehicleName: "motorbike",
 		hireCost: 109,
 		litrePerFuel: 3.7,
+		Name: "Motorbike"
 
 	},
 	{
 		vehicleName: "smallCar",
 		hireCost: 129,
 		litrePerFuel: 8.5,
+		Name: "Small Car"
 	},
 	{
 		vehicleName: "largeCar",
 		hireCost: 144,
 		litrePerFuel: 9.7,
+		Name: "Large Car"
 	},
 	{
 		vehicleName: "motorHome",
 		hireCost: 200,
 		litrePerFuel: 17,
+		Name: "Motor Home"
 	},
 	
 
 ];
 
-var totalHireCost;
-var totalFuelCost;
-var fuelPerDistance;
-var finalCost; 
 
 
 $(".vehicleIcon").click(function(){
-	
 	
 	vehicleName = ($(this).attr('data-value'));
 	for (var i = 0; i < vehicles.length; i++) {
 		if (vehicles[i].vehicleName == vehicleName) {
 			litrePerFuel = (vehicles[i].litrePerFuel);
 			hireCost = (vehicles[i]).hireCost;
+			Name = (vehicles[i].Name);
 
 		}
 	}
 
-	// Hire Cost
+
 	hireCalc = parseInt($("#Hire").val());
 	totalHireCost = hireCalc * hireCost;
 
@@ -366,11 +365,10 @@ $(".vehicleIcon").click(function(){
 	fuelPerDistance = fuelCost * litrePerFuel / 100;
 	totalFuelCost = realDistance * fuelPerDistance;
 
-	//calculates the final cost. 	
+	//Final Cost. 	
 	finalCost = totalHireCost + totalFuelCost; 
 
-
-	// console.log("Your Final Cost is: " + finalCost);
+	$("#active-car").empty().prepend("<h3 class='text'>"+Name+"</h3>");
 	$("#hireDetail").empty().prepend("<div><h2 class='text'>"+"$"+totalHireCost+"</h2><h4>Hire Cost</h4></div>");
 	$("#fuelCost").empty().prepend("<div><h2 class='text'>"+"$"+totalFuelCost.toPrecision(3)+"</h2><h4>Fuel Cost</h4></div>");
 	$("#totalCost").empty().prepend("<div><h2 class='text'>"+"$"+finalCost.toPrecision(4)+"</h2><h4>Total</h4></div>");
@@ -385,9 +383,7 @@ $(".vehicleIcon").click(function(){
 	1500);
 
 
-
 });
-
 
 
 function checkStep2(){
@@ -397,31 +393,29 @@ function checkStep2(){
 	}
 
 	$("#step2").show();
-}
+};
 
 $("#People,#Hire").keyup(checkStep2);
 
+
+
 // Mix it up plugin
 
-var WordNumberPeople, WordNumberHire;
-var inputPeople = document.querySelector('[data-ref="input-people"]');
-var inputHire = document.querySelector('[data-ref="input-hire"]');
+inputPeople = document.querySelector('[data-ref="input-people"]');
+inputHire = document.querySelector('[data-ref="input-hire"]');
 
-var mixer = mixitup('#mix-container');
+mixer = mixitup('#mix-container');
 
 function transportMix(){
-	var FilterVariable = "." + WordNumberPeople + "." + WordNumberHire;
+	FilterVariable = "." + WordNumberPeople + "." + WordNumberHire;
 	mixer.filter(FilterVariable);
 };
 
-// Set up a handler to listen for "keyup" events from the search input
 
 // Key up function for Number of people
 $(inputPeople).keyup(function(){
 
-var searchValue;
-
-console.log($(this).val());
+	searchValue;
 
 	if ($(this).val().length > 2){
 		// If the input value is greater than 2 characters, don't send
@@ -430,10 +424,7 @@ console.log($(this).val());
 		searchValue = $(this).val();
 	}
 
-	// console.log(searchValue);
-
 	WordNumberPeople = (toWords(searchValue) + "People");
-	// console.log("Your word result for people is: "+ WordNumberPeople);
 	transportMix();
 
 });
@@ -441,7 +432,7 @@ console.log($(this).val());
 // Key up function for Days of Hire
 $(inputHire).keyup(function(){
 
-	var hireValue;
+	hireValue;
 
 	if ($(this).val().length > 2){
 		// If the input value is greater than 2 characters, don't send
@@ -449,10 +440,8 @@ $(inputHire).keyup(function(){
 	} else {
 		hireValue = $(this).val();
 	}
-	// console.log(searchValue);
 
 	WordNumberHire = (toWords(hireValue) + "Day");
-	// console.log(WordNumberHire);
 	transportMix();
 
 });

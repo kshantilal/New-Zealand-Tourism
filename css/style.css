@@ -328,7 +328,6 @@ label{
 	margin-top: 15px;
 	position: relative;
 	top: 50%;
-	/*transform: translateY(-50%);*/
 }
 
 .text{
@@ -349,7 +348,6 @@ label{
 	font-size: 12px;
 	text-align: initial;
 	margin-right: 10px;
-
 }
 
 /*----------Swiper----------*/
@@ -382,7 +380,7 @@ label{
 
 /*----------Media Queries----------*/
 
-/*When the screen width is 1024px then run this*/
+/*Ipad*/
 @media only screen and (min-width: 1024px){
 	input{
 		width: 300px;
@@ -407,7 +405,7 @@ label{
 	}
 
 }
-
+/*Laptop*/
 @media only screen and (min-width: 1200px){
 	.col-4{
 		width: 30%;
@@ -426,7 +424,7 @@ label{
 		font-size: 20px;
 	}
 }
-
+/*Desktop*/
 @media only screen and (min-width: 1680px){
 	.col-4{
 		width: 30%;
@@ -445,14 +443,3 @@ label{
 		font-size: 26px;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
