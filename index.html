@@ -14,11 +14,23 @@
 	<div id="main-container">
 		<!-- Splash Page -->
 		<div id="splashpage"></div>
-		<div id="tourism-logo">
+		<div id="tourism-logo" class="scrollme animateme"
+			data-when="exit"
+			data-from="0"
+			data-to="1"
+			data-opacity="0"
+			data-translatey="-250"
+		>
 			<img src="img/tourism-logo.png">
 		</div>
 
-		<div id="down-arrow">
+		<div id="down-arrow" class="scrollme animateme"
+			data-when="exit"
+			data-from="0"
+			data-to="1"
+			data-opacity="0"
+			data-translatey="-250"
+		>
 			<span class="bottom"></span>
 		</div>
 
@@ -86,9 +98,17 @@
 		</div>   	
 
 		<!-- Form -->
-		<div class="row">
+		<div class="row scrollme">
 			<div class="col-4">
-				<form id="validation" method="post">
+				<form id="validation" method="post"
+					class="animateme"
+					data-when="span"
+					data-from="0.5"
+					data-to="0"
+					data-opacity="0"
+					data-translatex="300"
+					
+				>
 					<div class="form-container">
 						<label>FROM</label>
 						<div class="input">
@@ -135,7 +155,16 @@
 		<!-- Transport Images -->
 		<div class="row">
 			<div class="col-12">
-				<div id="transport-options">
+				<div id="transport-options" class="animateme scrollme"
+					data-when="enter"
+					data-from="0.5"
+					data-to="0"
+					data-crop="false"
+					data-scale="1.5"
+					data-opacity="0"
+					data-rotatex="90"
+
+				>
 					<h2 class="transport-title">Choose your Transport</h2>
 					<div class="transport-images container" id="mix-container">                   
 						<div id="motorbike" class="mix img-size onePeople oneDay twoDay threeDay fourDay fiveDay vehicleIcon" data-value="motorbike">
@@ -182,6 +211,7 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWeGHbX62mgk-G8yatK9IE2oFy0v6o7Dg&libraries=places"></script>
 	<script type="text/javascript" src="js/mixitup.min.js"></script>
 	<script type="text/javascript" src="js/swiper.jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.scrollme.min.js"></script>
 	<script type="text/javascript" src="js/num2words.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>
 </body>

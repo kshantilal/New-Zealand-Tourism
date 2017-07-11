@@ -318,7 +318,7 @@ $("#destination-input").focus(function(){
 });
 
 
-// OnClick show details
+// Show transport details depending on what vehicle the user clicks on
 vehicles = [
 	{
 		vehicleName: "motorbike",
