@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-var	map, mapOptions;
+var map, mapOptions;
 var Numbers, maxNumber, hasMap, hasOrig, hasDest; // Validation variables
 var mySwiper, mixer; //Variable for plugins
 var realDistance, Details; // Finds the distance then turns it into a number
@@ -10,7 +10,7 @@ var totalHireCost, totalFuelCost, fuelPerDistance, finalCost; // Variables for c
 
 // Maths for transport
 var motorBike = 109;
-var	smallCar = 129;
+var smallCar = 129;
 var largeCar = 144;
 var motorHome = 200;
 var fuelCost = 1.859; 
@@ -221,6 +221,13 @@ $("#Hire").focus(function(){
 
 });
 
+// disable mousewheel on a input number field when in focus
+$('form').on('focus', 'input[type=number]', function (e) {
+	$(this).on('mousewheel.disableScroll', function (e) {
+		e.preventDefault()
+	})
+});
+
 // Google Maps
 function AutocompleteDirectionsHandler(map) {
 	this.map = map;
@@ -364,7 +371,7 @@ $(".vehicleIcon").click(function(event){
 	fuelPerDistance = fuelCost * litrePerFuel / 100;
 	totalFuelCost = realDistance * fuelPerDistance;
 
-	// Final Cost. 	
+	// Final Cost.  
 	finalCost = totalHireCost + totalFuelCost; 
 
 	$("#active-car").empty().prepend("<h3 class='text'>"+Name+"</h3>");
