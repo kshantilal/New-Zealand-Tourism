@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+
 var map, mapOptions;
 var Numbers, maxNumber, hasMap, hasOrig, hasDest; // Validation variables
 var mySwiper, mixer; //Variable for plugins
@@ -9,14 +10,9 @@ var vehicleName, litrePerFuel, hireCost; // Variables for details
 var totalHireCost, totalFuelCost, fuelPerDistance, finalCost; // Variables for cost
 
 // Maths for transport
-var motorBike = 109;
-var smallCar = 129;
-var largeCar = 144;
-var motorHome = 200;
 var fuelCost = 1.859; 
 var vehicles; // Vehicles array
 
-var searchValue, hireValue; // Variables for number of people and hire input fields
 
 // Mix it up
 var WordNumberPeople, WordNumberHire, inputPeople, inputHire, FilterVariable;
@@ -29,6 +25,7 @@ $("#down-arrow").click(function(){
 	1500);
 
 });
+
 	mySwiper = new Swiper(".swiper-container", {
 	nextButton: ".swiper-button-next",
 	prevButton: ".swiper-button-prev",
@@ -42,6 +39,7 @@ $("#down-arrow").click(function(){
 	autoplayDisableOnInteraction: false, // When user interacts with the slider it continues after use
 
 });
+
 
 
 function init(){
@@ -159,12 +157,13 @@ function init(){
 	new AutocompleteDirectionsHandler(map); // Initializes the autocomplete forms
 
 };
+
 // Loads the google map
 google.maps.event.addDomListener(window, "load", init);
 
 
-// Validation for Number of people
 Numbers = /(?=(.*[1-9]){1}).{1,}/;
+// Validation for Number of people
 $("#People").focus(function(){
 	if ($(this).val().length === 0) {
 		$(this).parent().find("span.input-errors").empty();
@@ -172,28 +171,26 @@ $("#People").focus(function(){
 		$(this).parent().find("span.input-errors ul").append(
 								"<li class='numbers'>Must be at least 1 person</li>"+
 								"<li class='numbers'>Must be a number</li>"
-							)
+							);
 
 	}
 }).keyup(function(){
-
 	if ($(this).val().match(Numbers)) {
 		$(this).parent().find("span.input-errors .numbers").remove();
 
 	}else if ( (!$(this).val().match(Numbers)) && ($("li.numbers").length === 0) ){
-		$(this).parent().find("span.input-errors ul").append("<li class='numbers'>Must be at least 1 person</li>" + "<li class='numbers'>Must be a number</li>")
+		$(this).parent().find("span.input-errors ul").append("<li class='numbers'>Must be at least 1 person</li>" + "<li class='numbers'>Must be a number</li>");
 	
 	}
 
-	maxNumber = $(this).parent().find("span.input-errors")
+	maxNumber = $(this).parent().find("span.input-errors");
 	if ($(this).val() < 7){
 		$(this).parent().find("span.input-errors .max").remove();
 	} else if ( (!$(this).val().match(maxNumber)) && ($("li.max").length === 0) ){
-		$(this).parent().find("span.input-errors ul").append("<li class='max'>Must be less than 7 people</li>")
+		$(this).parent().find("span.input-errors ul").append("<li class='max'>Must be less than 7 people</li>");
 	}
 
-
-	});
+});
 
 // Validation for Days of Hire
 $("#Hire").focus(function(){
@@ -202,7 +199,7 @@ $("#Hire").focus(function(){
 		$(this).parent().find("span.input-errors").append("<ul class='error'></ul>");
 		$(this).parent().find("span.input-errors ul").append(
 								"<li class='numbers'>Must include 1 number</li>"
-							)
+							);
 
 	}
 }).keyup(function(){
@@ -210,13 +207,13 @@ $("#Hire").focus(function(){
 		$(this).parent().find("span.input-errors .numbers").remove();
 
 	}else if ( (!$(this).val().match(Numbers)) && ($("li.numbers").length === 0) ){
-		$(this).parent().find("span.input-errors ul").append("<li class='numbers'>Must hire for at least 1 day</li>")
+		$(this).parent().find("span.input-errors ul").append("<li class='numbers'>Must hire for at least 1 day</li>");
 	}
-	maxNumber = $(this).parent().find("span.input-errors")
+	maxNumber = $(this).parent().find("span.input-errors");
 	if ($(this).val() <= 15){
 		$(this).parent().find("span.input-errors .max").remove();
 	} else if ( (!$(this).val().match(maxNumber)) && ($("li.max").length === 0) ){
-		$(this).parent().find("span.input-errors ul").append("<li class='max'>Must be less than 15 days</li>")
+		$(this).parent().find("span.input-errors ul").append("<li class='max'>Must be less than 15 days</li>");
 	}
 
 });
@@ -224,11 +221,12 @@ $("#Hire").focus(function(){
 // disable mousewheel on a input number field when in focus
 $('form').on('focus', 'input[type=number]', function (e) {
 	$(this).on('mousewheel.disableScroll', function (e) {
-		e.preventDefault()
-	})
+		e.preventDefault();
+	});
 });
+
 $('form').on('blur', 'input[type=number]', function (e) {
-	$(this).off('mousewheel.disableScroll')
+	$(this).off('mousewheel.disableScroll');
 });
 
 // Google Maps
@@ -424,7 +422,7 @@ function transportMix(){
 // Key up function for Number of people
 $(inputPeople).keyup(function(){
 
-	searchValue;
+	var searchValue;
 
 	if ($(this).val().length > 2){
 		// If the input value is greater than 2 characters, don't send
@@ -441,7 +439,7 @@ $(inputPeople).keyup(function(){
 // Key up function for Days of Hire
 $(inputHire).keyup(function(){
 
-	hireValue;
+	var hireValue;
 
 	if ($(this).val().length > 2){
 		// If the input value is greater than 2 characters, don't send
@@ -457,9 +455,10 @@ $(inputHire).keyup(function(){
 
 
 
-
-
 });
+
+
+
 
 
 
