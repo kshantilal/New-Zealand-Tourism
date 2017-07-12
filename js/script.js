@@ -453,18 +453,4 @@ $(inputHire).keyup(function(){
 
 });
 
-
-
 });
-
-
-
-
-
-
-
-
-
-
-
-
